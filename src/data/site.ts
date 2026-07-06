@@ -5,6 +5,12 @@ export const site = {
   appStoreUrl: "TODO_APPSTORE_URL", // https://apps.apple.com/app/id__________
   playStoreUrl: "TODO_PLAY_URL", // https://play.google.com/store/apps/details?id=__________
   appStoreId: "TODO_APPSTORE_ID",
+  // App is not published yet: store badges open the waitlist dialog instead of
+  // linking to the stores. Flip to false once the store URLs above are real.
+  preLaunch: true,
+  // Cloudflare Pages Function that stores waitlist signups in D1.
+  // See functions/api/waitlist.ts and wrangler.toml.
+  waitlistEndpoint: "/api/waitlist",
   supportEmail: "support@ai-charades.net",
   analytics: "cloudflare" as const,
   rating: null as { value: number; count: number } | null,

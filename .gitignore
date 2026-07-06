@@ -4,6 +4,9 @@ dist/
 # generated types
 .astro/
 
+# wrangler local state (local D1 data, cache)
+.wrangler/
+
 # dependencies
 node_modules/
 

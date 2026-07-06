@@ -3,6 +3,7 @@ import StoreBadges from "./StoreBadges.astro";
 import Mascot from "./Mascot.astro";
 import { Image } from "astro:assets";
 import homeScreenshot from "../assets/screenshots/home.png";
+import soloGuessScreenshot from "../assets/screenshots/ai-solo-guess.png";
 import type { Dictionary } from "../i18n/types";
 
 interface Props {
@@ -31,11 +32,19 @@ const { dict } = Astro.props;
     </div>
     <div class="hero-visual" aria-hidden="false">
       <div class="blob" aria-hidden="true"></div>
-      <div class="phone-frame sticker">
+      <div class="phone-frame phone-frame--back">
+        <Image
+          src={soloGuessScreenshot}
+          alt={dict.hero.imageAlt2}
+          width={320}
+          fetchpriority="high"
+        />
+      </div>
+      <div class="phone-frame phone-frame--front">
         <Image
           src={homeScreenshot}
           alt={dict.hero.imageAlt}
-          width={360}
+          width={320}
           fetchpriority="high"
         />
       </div>
@@ -129,7 +138,7 @@ const { dict } = Astro.props;
   }
   .phone-frame {
     position: relative;
-    max-width: 300px;
+    max-width: min(240px, 42vw);
     border-radius: 36px;
     overflow: hidden;
     border: 4px solid var(--fiesta-ink);
@@ -137,8 +146,20 @@ const { dict } = Astro.props;
     box-shadow: 12px 14px 0 rgba(26, 20, 16, 0.16);
     transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .phone-frame:hover {
-    transform: rotate(0deg) translateY(-6px);
+  .phone-frame--front {
+    z-index: 2;
+    margin-inline-start: -12%;
+    transform: rotate(-3deg) translateY(1.25rem);
+  }
+  .phone-frame--back {
+    z-index: 1;
+    transform: rotate(4deg) translateY(-0.75rem);
+  }
+  .phone-frame--front:hover {
+    transform: rotate(-1deg) translateY(0.9rem);
+  }
+  .phone-frame--back:hover {
+    transform: rotate(2deg) translateY(-1.1rem);
   }
   .phone-frame :global(img) {
     display: block;

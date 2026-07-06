@@ -19,6 +19,7 @@ export const nl: Dictionary = {
       "Verslaat een écht slimme AI in een potje solo 20 Vragen, geef daarna de telefoon door voor klassieke charades met vrienden. 40+ woordpaketten, een nieuw Dagelijks Woord en AI-gegenereerde eigen decks. Geen setup nodig — gewoon spelen.",
     micro: "Gratis te spelen",
     imageAlt: "AI Charades startscherm met de spelmodi AI Solo en Charades",
+    imageAlt2: "AI Charades solomodus: het woord Spider-Man raden door ja/nee-vragen aan de AI te stellen",
   },
   trust: {
     items: [
@@ -118,6 +119,16 @@ export const nl: Dictionary = {
   storeBadges: {
     appStoreAria: "Download AI Charades in de App Store",
     playStoreAria: "Haal AI Charades in Google Play",
+  },
+  waitlist: {
+    title: "Binnenkort beschikbaar!",
+    body: "AI Charades staat nog niet in de stores. Laat je e-mailadres achter en we laten het je weten zodra de app live is.",
+    emailPlaceholder: "you@example.com",
+    submit: "Houd me op de hoogte",
+    success: "Je staat op de lijst! Tot snel. 🎉",
+    error: "Er ging iets mis — probeer het opnieuw.",
+    close: "Sluiten",
+    note: "Eén mailtje bij de lancering. Geen spam, beloofd.",
   },
   faq: [
     {

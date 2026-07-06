@@ -1,5 +1,7 @@
 ---
 import Seo from "../components/Seo.astro";
+import WaitlistDialog from "../components/WaitlistDialog.astro";
+import { site } from "../data/site";
 import "../styles/fonts.css";
 import "../styles/tokens.css";
 import { getLocaleInfo } from "../i18n/locales";
@@ -35,6 +37,7 @@ const { dir } = getLocaleInfo(lang);
   </head>
   <body>
     <slot />
+    {site.preLaunch && dict && <WaitlistDialog dict={dict} lang={lang} />}
     <script>
       const observer = new IntersectionObserver(
         (entries) => {

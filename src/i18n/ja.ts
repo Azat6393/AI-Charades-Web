@@ -19,6 +19,7 @@ export const ja: Dictionary = {
       "本気で賢いAIを相手にソロで20の質問ゲームに挑み、そのあとはスマホを回して友達と定番のジェスチャーゲームを楽しもう。40以上のワードパック、毎日更新されるデイリーワード、AIが生成するオリジナルデッキも。準備は不要 — すぐに遊べます。",
     micro: "無料でプレイ",
     imageAlt: "AI SoloモードとヘッズアップモードがあるAI Charadesのホーム画面",
+    imageAlt2: "AI Charadesのソロモード:AIにはい/いいえの質問をしてスパイダーマンという単語を当てる",
   },
   trust: {
     items: [
@@ -118,6 +119,16 @@ export const ja: Dictionary = {
   storeBadges: {
     appStoreAria: "App StoreでAI Charadesをダウンロード",
     playStoreAria: "Google PlayでAI Charadesを入手",
+  },
+  waitlist: {
+    title: "まもなく登場!",
+    body: "AI Charadesはまだストアで公開されていません。メールアドレスを登録すると、リリース時にすぐお知らせします。",
+    emailPlaceholder: "you@example.com",
+    submit: "通知を受け取る",
+    success: "登録しました!リリースをお楽しみに 🎉",
+    error: "エラーが発生しました。もう一度お試しください。",
+    close: "閉じる",
+    note: "リリース時に1通だけお送りします。スパムはありません。",
   },
   faq: [
     {

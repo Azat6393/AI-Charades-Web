@@ -19,6 +19,7 @@ export const hi: Dictionary = {
       "सोलो 20 Questions गेम में एक सच में स्मार्ट AI को मात दें, फिर दोस्तों के साथ क्लासिक हेड्स-अप शराड्स के लिए फोन आगे बढ़ाएं। 40+ वर्ड पैक्स, एक नया डेली वर्ड, और AI-जनरेटेड कस्टम डेक्स। कोई सेटअप नहीं — बस खेलें।",
     micro: "मुफ़्त में खेलें",
     imageAlt: "AI Charades का होम स्क्रीन जिसमें AI Solo और Heads Up गेम मोड्स दिख रहे हैं",
+    imageAlt2: "AI Charades सोलो मोड: AI से हाँ/नहीं सवाल पूछकर स्पाइडर-मैन शब्द का अनुमान लगाना",
   },
   trust: {
     items: [
@@ -118,6 +119,16 @@ export const hi: Dictionary = {
   storeBadges: {
     appStoreAria: "App Store से AI Charades डाउनलोड करें",
     playStoreAria: "Google Play से AI Charades पाएं",
+  },
+  waitlist: {
+    title: "जल्द आ रहा है!",
+    body: "AI Charades अभी स्टोर पर उपलब्ध नहीं है। अपना ईमेल छोड़ें और लॉन्च होते ही हम आपको बता देंगे।",
+    emailPlaceholder: "you@example.com",
+    submit: "मुझे सूचित करें",
+    success: "आप सूची में हैं! जल्द मिलते हैं। 🎉",
+    error: "कुछ गलत हो गया — कृपया फिर से कोशिश करें।",
+    close: "बंद करें",
+    note: "लॉन्च पर सिर्फ़ एक ईमेल। कोई स्पैम नहीं।",
   },
   faq: [
     {

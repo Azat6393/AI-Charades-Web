@@ -19,6 +19,7 @@ export const ru: Dictionary = {
       "Обыграйте по-настоящему умный ИИ в соло-игре «20 вопросов», а затем передайте телефон друзьям для классических шарад. Более 40 наборов слов, новое слово дня и колоды, созданные ИИ. Никакой подготовки — просто играйте.",
     micro: "Бесплатно",
     imageAlt: "Главный экран AI Charades с режимами AI Solo и Heads Up",
+    imageAlt2: "Соло-режим AI Charades: угадывание слова «Человек-паук» с помощью вопросов «да/нет» к ИИ",
   },
   trust: {
     items: [
@@ -118,6 +119,16 @@ export const ru: Dictionary = {
   storeBadges: {
     appStoreAria: "Скачать AI Charades в App Store",
     playStoreAria: "Скачать AI Charades в Google Play",
+  },
+  waitlist: {
+    title: "Скоро запуск!",
+    body: "AI Charades ещё не появилась в магазинах. Оставьте почту — и мы сообщим сразу после релиза.",
+    emailPlaceholder: "you@example.com",
+    submit: "Сообщить мне",
+    success: "Вы в списке! До скорого. 🎉",
+    error: "Что-то пошло не так — попробуйте ещё раз.",
+    close: "Закрыть",
+    note: "Одно письмо при запуске. Никакого спама.",
   },
   faq: [
     {

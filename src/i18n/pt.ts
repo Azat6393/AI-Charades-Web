@@ -19,6 +19,7 @@ export const pt: Dictionary = {
       "Engana uma IA verdadeiramente inteligente num jogo solo de 20 Perguntas e depois passa o telemóvel para a clássica mímica em grupo com amigos. Mais de 40 pacotes de palavras, uma nova Palavra do Dia e baralhos personalizados gerados por IA. Sem configurações — é só jogar.",
     micro: "Grátis para jogar",
     imageAlt: "Ecrã inicial do AI Charades a mostrar os modos IA Solo e Mímica em Grupo",
+    imageAlt2: "Modo solo do AI Charades: adivinhando a palavra Homem-Aranha com perguntas de sim ou não à IA",
   },
   trust: {
     items: [
@@ -118,6 +119,16 @@ export const pt: Dictionary = {
   storeBadges: {
     appStoreAria: "Descarregar o AI Charades na App Store",
     playStoreAria: "Obter o AI Charades no Google Play",
+  },
+  waitlist: {
+    title: "Em breve!",
+    body: "O AI Charades ainda não está nas lojas. Deixe seu e-mail e avisaremos assim que for lançado.",
+    emailPlaceholder: "you@example.com",
+    submit: "Avise-me",
+    success: "Você está na lista! Até breve. 🎉",
+    error: "Algo deu errado — tente novamente.",
+    close: "Fechar",
+    note: "Um único e-mail no lançamento. Sem spam.",
   },
   faq: [
     {

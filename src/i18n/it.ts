@@ -19,6 +19,7 @@ export const it: Dictionary = {
       "Batti un'IA davvero intelligente in una partita in solitaria di 20 Domande, poi passa il telefono per il classico gioco dei mimi con gli amici. Oltre 40 mazzi di parole, una nuova Parola del Giorno e mazzi personalizzati generati dall'IA. Nessuna configurazione — si gioca e basta.",
     micro: "Gratis da giocare",
     imageAlt: "Schermata iniziale di AI Charades con le modalità AI Solo e Mimi",
+    imageAlt2: "Modalità solo di AI Charades: indovinare la parola Spider-Man facendo domande sì/no all'IA",
   },
   trust: {
     items: [
@@ -118,6 +119,16 @@ export const it: Dictionary = {
   storeBadges: {
     appStoreAria: "Scarica AI Charades sull'App Store",
     playStoreAria: "Scarica AI Charades su Google Play",
+  },
+  waitlist: {
+    title: "In arrivo!",
+    body: "AI Charades non è ancora negli store. Lascia la tua email e ti avviseremo appena sarà disponibile.",
+    emailPlaceholder: "you@example.com",
+    submit: "Avvisami",
+    success: "Sei in lista! A presto. 🎉",
+    error: "Qualcosa è andato storto — riprova.",
+    close: "Chiudi",
+    note: "Una sola email al lancio. Niente spam.",
   },
   faq: [
     {

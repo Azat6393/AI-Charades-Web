@@ -19,6 +19,7 @@ export const zh: Dictionary = {
       "在单人 20 问模式中智取真正聪明的 AI，然后把手机传给朋友，玩经典的比划猜词游戏。40+ 词包、每日新词，还有 AI 生成的自定义词组。无需设置，直接开玩。",
     micro: "免费畅玩",
     imageAlt: "AI Charades 主屏幕，显示 AI 单人模式和比划猜词模式",
+    imageAlt2: "AI Charades 单人模式:通过向 AI 提出是/否问题来猜出“蜘蛛侠”这个词",
   },
   trust: {
     items: [
@@ -118,6 +119,16 @@ export const zh: Dictionary = {
   storeBadges: {
     appStoreAria: "在 App Store 下载 AI Charades",
     playStoreAria: "在 Google Play 获取 AI Charades",
+  },
+  waitlist: {
+    title: "即将上线!",
+    body: "AI Charades 尚未在应用商店上架。留下你的邮箱,上线后我们会第一时间通知你。",
+    emailPlaceholder: "you@example.com",
+    submit: "通知我",
+    success: "已加入名单!敬请期待。🎉",
+    error: "出错了,请重试。",
+    close: "关闭",
+    note: "上线时只发一封邮件,绝无垃圾邮件。",
   },
   faq: [
     {

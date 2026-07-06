@@ -19,6 +19,7 @@ export const th: Dictionary = {
       "เอาชนะ AI ที่ฉลาดจริงในโหมดเดี่ยวแบบ 20 คำถาม แล้วส่งมือถือต่อให้เพื่อนเล่นชาราดคลาสสิกแบบยกมือถือแปะหน้าผาก มีหมวดคำมากกว่า 40 หมวด คำศัพท์ประจำวันใหม่ทุกวัน และชุดคำที่ AI สร้างให้เฉพาะคุณ ไม่ต้องตั้งค่าอะไร แค่เล่นได้เลย",
     micro: "เล่นฟรี",
     imageAlt: "หน้าจอหลักของ AI Charades แสดงโหมด AI Solo และ Heads Up",
+    imageAlt2: "โหมดเล่นคนเดียวของ AI Charades: ทายคำว่า Spider-Man ด้วยการถามคำถามใช่/ไม่ใช่กับ AI",
   },
   trust: {
     items: [
@@ -118,6 +119,16 @@ export const th: Dictionary = {
   storeBadges: {
     appStoreAria: "ดาวน์โหลด AI Charades บน App Store",
     playStoreAria: "รับ AI Charades บน Google Play",
+  },
+  waitlist: {
+    title: "เร็วๆ นี้!",
+    body: "AI Charades ยังไม่เปิดให้ดาวน์โหลดในสโตร์ ฝากอีเมลไว้ แล้วเราจะแจ้งให้ทราบทันทีที่เปิดตัว",
+    emailPlaceholder: "you@example.com",
+    submit: "แจ้งเตือนฉัน",
+    success: "คุณอยู่ในรายชื่อแล้ว! แล้วพบกัน 🎉",
+    error: "เกิดข้อผิดพลาด — โปรดลองอีกครั้ง",
+    close: "ปิด",
+    note: "อีเมลฉบับเดียวตอนเปิดตัว ไม่มีสแปม",
   },
   faq: [
     {

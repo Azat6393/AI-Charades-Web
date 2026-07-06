@@ -19,6 +19,7 @@ export const en: Dictionary = {
       "Outsmart a genuinely smart AI in a solo game of 20 Questions, then pass the phone for classic heads-up charades with friends. 40+ word packs, a new Daily Word, and AI-generated custom decks. No setup — just play.",
     micro: "Free to play",
     imageAlt: "AI Charades home screen showing AI Solo and Heads Up game modes",
+    imageAlt2: "AI Charades solo mode: guessing the word Spider-Man by asking the AI yes/no questions",
   },
   trust: {
     items: [
@@ -118,6 +119,16 @@ export const en: Dictionary = {
   storeBadges: {
     appStoreAria: "Download AI Charades on the App Store",
     playStoreAria: "Get AI Charades on Google Play",
+  },
+  waitlist: {
+    title: "Coming soon!",
+    body: "AI Charades isn't in the stores just yet. Drop your email and we'll let you know the moment it launches.",
+    emailPlaceholder: "you@example.com",
+    submit: "Notify me",
+    success: "You're on the list! Talk soon. 🎉",
+    error: "Something went wrong — please try again.",
+    close: "Close",
+    note: "One launch email. No spam, ever.",
   },
   faq: [
     {

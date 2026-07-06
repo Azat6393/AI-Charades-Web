@@ -8,36 +8,47 @@ interface Props {
 }
 const { dict, size = "md" } = Astro.props;
 const height = size === "lg" ? "56" : "44";
+
+const badges = [
+  {
+    href: site.appStoreUrl,
+    aria: dict.storeBadges.appStoreAria,
+    src: "/badges/app-store-badge.svg",
+    width: size === "lg" ? "168" : "132",
+  },
+  {
+    href: site.playStoreUrl,
+    aria: dict.storeBadges.playStoreAria,
+    src: "/badges/google-play-badge.png",
+    width: size === "lg" ? "189" : "148",
+  },
+];
 ---
 
 <div class:list={["store-badges", size]}>
-  <a
-    href={site.appStoreUrl}
-    aria-label={dict.storeBadges.appStoreAria}
-    rel="noopener"
-  >
-    <img
-      src="/badges/app-store-badge.svg"
-      alt=""
-      height={height}
-      width={size === "lg" ? "168" : "132"}
-      loading="lazy"
-    />
-  </a>
-  <a
-    href={site.playStoreUrl}
-    aria-label={dict.storeBadges.playStoreAria}
-    rel="noopener"
-  >
-    <img
-      src="/badges/google-play-badge.png"
-      alt=""
-      height={height}
-      width={size === "lg" ? "189" : "148"}
-      loading="lazy"
-    />
-  </a>
+  {
+    badges.map((badge) =>
+      site.preLaunch ? (
+        <button type="button" data-waitlist-trigger aria-label={badge.aria}>
+          <img src={badge.src} alt="" height={height} width={badge.width} loading="lazy" />
+        </button>
+      ) : (
+        <a href={badge.href} aria-label={badge.aria} rel="noopener">
+          <img src={badge.src} alt="" height={height} width={badge.width} loading="lazy" />
+        </a>
+      )
+    )
+  }
 </div>
+
+<script>
+  document.querySelectorAll("[data-waitlist-trigger]").forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const dialog = document.getElementById("waitlist-dialog");
+      if (dialog instanceof HTMLDialogElement) dialog.showModal();
+    });
+  });
+</script>
 
 <style>
   .store-badges {
@@ -54,14 +65,23 @@ const height = size === "lg" ? "56" : "44";
   .store-badges.lg img {
     height: 56px;
   }
-  .store-badges a {
+  .store-badges a,
+  .store-badges button {
     transition: transform 0.12s;
     line-height: 0;
   }
-  .store-badges a:hover {
+  .store-badges button {
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+  .store-badges a:hover,
+  .store-badges button:hover {
     transform: translateY(2px);
   }
-  .store-badges a:focus-visible {
+  .store-badges a:focus-visible,
+  .store-badges button:focus-visible {
     outline: 3px solid var(--fiesta-ink);
     outline-offset: 3px;
     border-radius: 8px;

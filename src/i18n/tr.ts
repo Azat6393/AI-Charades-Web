@@ -19,6 +19,7 @@ export const tr: Dictionary = {
       "Solo modda gerçekten akıllı bir yapay zekâyı 20 Soru'da alt et, sonra telefonu arkadaşlarınla elden ele dolaştırıp klasik kafada tabu oyna. 40+ kelime paketi, her gün yeni bir Günün Kelimesi ve yapay zekâ ile oluşturulan özel desteler. Kurulum yok — direkt oyna.",
     micro: "Ücretsiz oyna",
     imageAlt: "AI Charades ana ekranı, Solo Yapay Zekâ ve Kafada Tabu oyun modlarını gösteriyor",
+    imageAlt2: "AI Charades solo modu: yapay zekâya evet/hayır soruları sorarak Spider-Man kelimesini tahmin etme",
   },
   trust: {
     items: [
@@ -118,6 +119,16 @@ export const tr: Dictionary = {
   storeBadges: {
     appStoreAria: "AI Charades'i App Store'dan indir",
     playStoreAria: "AI Charades'i Google Play'den edin",
+  },
+  waitlist: {
+    title: "Çok yakında!",
+    body: "AI Charades henüz mağazalarda değil. E-postanı bırak, yayınlanır yayınlanmaz haber verelim.",
+    emailPlaceholder: "you@example.com",
+    submit: "Bana haber ver",
+    success: "Listedesin! Görüşmek üzere. 🎉",
+    error: "Bir şeyler ters gitti — lütfen tekrar dene.",
+    close: "Kapat",
+    note: "Lansmanda tek bir e-posta. Asla spam yok.",
   },
   faq: [
     {

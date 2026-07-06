@@ -19,6 +19,7 @@ export const id: Dictionary = {
       "Kalahkan AI yang benar-benar cerdas dalam game solo 20 Pertanyaan, lalu oper HP-mu untuk main charades klasik bareng teman-teman. 40+ paket kata, Kata Harian baru setiap hari, dan deck custom buatan AI. Tanpa ribet — langsung main.",
     micro: "Gratis dimainkan",
     imageAlt: "Layar utama AI Charades menampilkan mode AI Solo dan Heads Up",
+    imageAlt2: "Mode solo AI Charades: menebak kata Spider-Man dengan mengajukan pertanyaan ya/tidak ke AI",
   },
   trust: {
     items: [
@@ -118,6 +119,16 @@ export const id: Dictionary = {
   storeBadges: {
     appStoreAria: "Unduh AI Charades di App Store",
     playStoreAria: "Dapatkan AI Charades di Google Play",
+  },
+  waitlist: {
+    title: "Segera hadir!",
+    body: "AI Charades belum tersedia di toko aplikasi. Tinggalkan email kamu dan kami akan mengabari begitu dirilis.",
+    emailPlaceholder: "you@example.com",
+    submit: "Beri tahu saya",
+    success: "Kamu sudah masuk daftar! Sampai nanti. 🎉",
+    error: "Terjadi kesalahan — coba lagi.",
+    close: "Tutup",
+    note: "Satu email saat rilis. Tanpa spam.",
   },
   faq: [
     {

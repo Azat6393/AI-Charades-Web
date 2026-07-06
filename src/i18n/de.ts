@@ -19,6 +19,7 @@ export const de: Dictionary = {
       "Überliste eine wirklich clevere KI im Solo-Spiel „20 Fragen“ und gib dann das Handy weiter für klassische Stirnraten-Charade mit Freunden. 40+ Wortpakete, ein neues Wort des Tages und KI-generierte eigene Kategorien. Kein Aufwand — einfach loslegen.",
     micro: "Kostenlos spielbar",
     imageAlt: "AI Charades Startbildschirm mit den Spielmodi KI Solo und Stirnraten",
+    imageAlt2: "AI Charades Solo-Modus: das Wort Spider-Man durch Ja/Nein-Fragen an die KI erraten",
   },
   trust: {
     items: [
@@ -118,6 +119,16 @@ export const de: Dictionary = {
   storeBadges: {
     appStoreAria: "AI Charades im App Store herunterladen",
     playStoreAria: "AI Charades bei Google Play holen",
+  },
+  waitlist: {
+    title: "Bald verfügbar!",
+    body: "AI Charades ist noch nicht in den Stores. Hinterlasse deine E-Mail und wir sagen dir sofort Bescheid, wenn es losgeht.",
+    emailPlaceholder: "you@example.com",
+    submit: "Benachrichtige mich",
+    success: "Du stehst auf der Liste! Bis bald. 🎉",
+    error: "Etwas ist schiefgelaufen — bitte versuch es noch einmal.",
+    close: "Schließen",
+    note: "Eine E-Mail zum Launch. Kein Spam, versprochen.",
   },
   faq: [
     {

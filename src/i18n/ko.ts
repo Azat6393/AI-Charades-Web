@@ -19,6 +19,7 @@ export const ko: Dictionary = {
       "진짜 똑똑한 AI를 상대로 스무고개를 즐기고, 친구들과 함께 폰을 돌려가며 클래식 헤드업 제스처 게임을 플레이하세요. 40개 이상의 단어 팩, 매일 새로워지는 오늘의 단어, AI가 만들어주는 커스텀 팩까지. 설정 없이 바로 플레이하세요.",
     micro: "무료로 즐기기",
     imageAlt: "AI 솔로와 헤드업 게임 모드를 보여주는 AI Charades 홈 화면",
+    imageAlt2: "AI Charades 솔로 모드: AI에게 예/아니오 질문을 하며 스파이더맨 단어 맞히기",
   },
   trust: {
     items: [
@@ -118,6 +119,16 @@ export const ko: Dictionary = {
   storeBadges: {
     appStoreAria: "App Store에서 AI Charades 다운로드",
     playStoreAria: "Google Play에서 AI Charades 받기",
+  },
+  waitlist: {
+    title: "곧 출시됩니다!",
+    body: "AI Charades는 아직 스토어에 출시되지 않았습니다. 이메일을 남겨 주시면 출시 즉시 알려드릴게요.",
+    emailPlaceholder: "you@example.com",
+    submit: "알림 받기",
+    success: "등록 완료! 곧 만나요. 🎉",
+    error: "문제가 발생했습니다. 다시 시도해 주세요.",
+    close: "닫기",
+    note: "출시 때 이메일 한 통만 보내드립니다. 스팸은 없어요.",
   },
   faq: [
     {

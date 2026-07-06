@@ -19,6 +19,7 @@ export const es: Dictionary = {
       "Gana a una IA de verdad inteligente en un juego solo de 20 Preguntas, y luego pasa el teléfono para las charadas clásicas con amigos. Más de 40 mazos de palabras, una nueva Palabra del Día y mazos personalizados generados por IA. Sin configuraciones — solo a jugar.",
     micro: "Gratis para jugar",
     imageAlt: "Pantalla de inicio de AI Charades mostrando los modos IA Solo y Charadas",
+    imageAlt2: "Modo solitario de AI Charades: adivinando la palabra Spider-Man con preguntas de sí o no a la IA",
   },
   trust: {
     items: [
@@ -118,6 +119,16 @@ export const es: Dictionary = {
   storeBadges: {
     appStoreAria: "Descarga AI Charades en la App Store",
     playStoreAria: "Consigue AI Charades en Google Play",
+  },
+  waitlist: {
+    title: "¡Muy pronto!",
+    body: "AI Charades aún no está en las tiendas. Déjanos tu correo y te avisaremos en cuanto se lance.",
+    emailPlaceholder: "you@example.com",
+    submit: "Avísame",
+    success: "¡Estás en la lista! Hablamos pronto. 🎉",
+    error: "Algo salió mal — inténtalo de nuevo.",
+    close: "Cerrar",
+    note: "Un solo correo al lanzamiento. Nada de spam.",
   },
   faq: [
     {

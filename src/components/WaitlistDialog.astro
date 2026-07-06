@@ -1,0 +1,202 @@
+---
+import { site } from "../data/site";
+import type { Dictionary } from "../i18n/types";
+
+interface Props {
+  dict: Dictionary;
+  lang: string;
+}
+const { dict, lang } = Astro.props;
+---
+
+<dialog id="waitlist-dialog" aria-labelledby="waitlist-title">
+  <button
+    type="button"
+    class="waitlist-close"
+    data-waitlist-close
+    aria-label={dict.waitlist.close}
+  >
+    <svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true">
+      <path d="M3 3 L13 13 M13 3 L3 13" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+    </svg>
+  </button>
+  <div class="waitlist-emoji" aria-hidden="true">🚀</div>
+  <h2 id="waitlist-title">{dict.waitlist.title}</h2>
+  <p class="waitlist-body">{dict.waitlist.body}</p>
+  <form class="waitlist-form" action={site.waitlistEndpoint} method="post" novalidate>
+    <input type="hidden" name="lang" value={lang} />
+    <input
+      type="text"
+      name="website"
+      class="waitlist-hp"
+      tabindex="-1"
+      autocomplete="off"
+      aria-hidden="true"
+    />
+    <input
+      type="email"
+      name="email"
+      required
+      autocomplete="email"
+      inputmode="email"
+      placeholder={dict.waitlist.emailPlaceholder}
+      aria-label={dict.waitlist.emailPlaceholder}
+    />
+    <button type="submit" class="btn-primary">{dict.waitlist.submit}</button>
+  </form>
+  <p class="waitlist-note">{dict.waitlist.note}</p>
+  <p class="waitlist-status waitlist-status--success" role="status" hidden>
+    {dict.waitlist.success}
+  </p>
+  <p class="waitlist-status waitlist-status--error" role="alert" hidden>
+    {dict.waitlist.error}
+  </p>
+</dialog>
+
+<script>
+  const dialog = document.getElementById("waitlist-dialog") as HTMLDialogElement | null;
+
+  if (dialog) {
+    const form = dialog.querySelector<HTMLFormElement>(".waitlist-form");
+    const note = dialog.querySelector<HTMLElement>(".waitlist-note");
+    const success = dialog.querySelector<HTMLElement>(".waitlist-status--success");
+    const error = dialog.querySelector<HTMLElement>(".waitlist-status--error");
+
+    dialog.querySelector("[data-waitlist-close]")?.addEventListener("click", () => dialog.close());
+
+    // Close when the backdrop (the dialog element itself) is clicked.
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+
+      const submitBtn = form.querySelector<HTMLButtonElement>("button[type=submit]");
+      if (submitBtn) submitBtn.disabled = true;
+      if (error) error.hidden = true;
+
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" },
+        });
+        if (!res.ok) throw new Error(`Waitlist signup failed: ${res.status}`);
+        form.hidden = true;
+        if (note) note.hidden = true;
+        if (success) success.hidden = false;
+      } catch {
+        if (error) error.hidden = false;
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+      }
+    });
+  }
+</script>
+
+<style>
+  #waitlist-dialog {
+    width: min(26rem, calc(100vw - 2.5rem));
+    border: 3px solid var(--fiesta-ink);
+    border-radius: var(--radius-lg);
+    background: var(--fiesta-surface);
+    color: var(--fiesta-ink);
+    padding: 2rem 1.75rem 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+  }
+  #waitlist-dialog::backdrop {
+    background: rgba(26, 20, 16, 0.55);
+  }
+  #waitlist-dialog[open] {
+    animation: waitlist-pop 0.35s cubic-bezier(0.22, 1.4, 0.36, 1);
+  }
+  @keyframes waitlist-pop {
+    from { opacity: 0; transform: translateY(18px) scale(0.94); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .waitlist-close {
+    position: absolute;
+    top: 0.9rem;
+    inset-inline-end: 0.9rem;
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    background: var(--fiesta-card);
+    color: var(--fiesta-ink);
+    border: 2px solid var(--fiesta-ink);
+    border-radius: 50%;
+    box-shadow: var(--shadow-sticker-sm);
+    cursor: pointer;
+    transition: transform 0.12s, box-shadow 0.12s;
+  }
+  .waitlist-close:hover {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 rgba(26, 20, 16, 0.9);
+  }
+  .waitlist-close:focus-visible {
+    outline: 3px solid var(--fiesta-ink);
+    outline-offset: 2px;
+  }
+  .waitlist-emoji {
+    font-size: 2.5rem;
+    line-height: 1;
+    margin-bottom: 0.6rem;
+  }
+  #waitlist-dialog h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.35em;
+  }
+  .waitlist-body {
+    color: var(--ink-muted);
+    margin-bottom: 1.25rem;
+  }
+  .waitlist-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .waitlist-form[hidden] {
+    display: none;
+  }
+  /* Honeypot: visually gone but still submittable, so bots fill it. */
+  .waitlist-hp {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .waitlist-form input {
+    font: inherit;
+    color: var(--fiesta-ink);
+    background: var(--fiesta-card);
+    border: 2px solid var(--fiesta-ink);
+    border-radius: var(--radius-pill);
+    padding: 0.85rem 1.25rem;
+    text-align: center;
+  }
+  .waitlist-form input:focus-visible {
+    outline: 3px solid var(--fiesta-blue);
+    outline-offset: 2px;
+  }
+  .waitlist-form .btn-primary {
+    justify-content: center;
+  }
+  .waitlist-note {
+    margin: 0.9rem 0 0;
+    font-size: 0.875rem;
+    color: var(--ink-muted);
+  }
+  .waitlist-status {
+    margin: 0.9rem 0 0;
+    font-weight: 600;
+  }
+  .waitlist-status--error {
+    color: var(--fiesta-accent);
+  }
+</style>

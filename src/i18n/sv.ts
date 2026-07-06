@@ -19,6 +19,7 @@ export const sv: Dictionary = {
       "Lura en genuint smart AI i ett soloparti av 20 frågor, ge sedan telefonen vidare för klassisk charader med vänner. 40+ ordpaket, ett nytt dagligt ord och AI-genererade specialpaket. Inga förberedelser — bara spela.",
     micro: "Gratis att spela",
     imageAlt: "AI Charades startskärm som visar AI Solo och Charader-lägena",
+    imageAlt2: "AI Charades sololäge: gissa ordet Spider-Man genom att ställa ja/nej-frågor till AI:n",
   },
   trust: {
     items: [
@@ -118,6 +119,16 @@ export const sv: Dictionary = {
   storeBadges: {
     appStoreAria: "Ladda ner AI Charades på App Store",
     playStoreAria: "Skaffa AI Charades på Google Play",
+  },
+  waitlist: {
+    title: "Kommer snart!",
+    body: "AI Charades finns inte i butikerna än. Lämna din e-post så hör vi av oss så fort spelet släpps.",
+    emailPlaceholder: "you@example.com",
+    submit: "Meddela mig",
+    success: "Du står på listan! Vi hörs snart. 🎉",
+    error: "Något gick fel — försök igen.",
+    close: "Stäng",
+    note: "Ett mejl vid lanseringen. Ingen skräppost.",
   },
   faq: [
     {

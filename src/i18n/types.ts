@@ -20,6 +20,7 @@ export interface Dictionary {
     subhead: string;
     micro: string;
     imageAlt: string;
+    imageAlt2: string;
   };
   trust: {
     items: [string, string, string, string, string];
@@ -82,6 +83,16 @@ export interface Dictionary {
   storeBadges: {
     appStoreAria: string;
     playStoreAria: string;
+  };
+  waitlist: {
+    title: string;
+    body: string;
+    emailPlaceholder: string;
+    submit: string;
+    success: string;
+    error: string;
+    close: string;
+    note: string;
   };
   faq: FaqItem[];
   categories: string[];

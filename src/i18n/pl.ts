@@ -19,6 +19,7 @@ export const pl: Dictionary = {
       "Przechytrz naprawdę inteligentną AI w grze solo 20 pytań, a potem podaj telefon dalej na klasyczne kalambury ze znajomymi. 40+ zestawów słów, nowe Słowo Dnia i talie generowane przez AI. Żadnego przygotowania — po prostu graj.",
     micro: "Darmowa gra",
     imageAlt: "Ekran główny AI Charades pokazujący tryby AI Solo i Kalambury",
+    imageAlt2: "Tryb solo AI Charades: odgadywanie słowa Spider-Man przez zadawanie AI pytań tak/nie",
   },
   trust: {
     items: [
@@ -118,6 +119,16 @@ export const pl: Dictionary = {
   storeBadges: {
     appStoreAria: "Pobierz AI Charades w App Store",
     playStoreAria: "Pobierz AI Charades w Google Play",
+  },
+  waitlist: {
+    title: "Już wkrótce!",
+    body: "AI Charades nie jest jeszcze dostępne w sklepach. Zostaw swój e-mail, a damy Ci znać zaraz po premierze.",
+    emailPlaceholder: "you@example.com",
+    submit: "Powiadom mnie",
+    success: "Jesteś na liście! Do zobaczenia. 🎉",
+    error: "Coś poszło nie tak — spróbuj ponownie.",
+    close: "Zamknij",
+    note: "Jeden e-mail przy premierze. Żadnego spamu.",
   },
   faq: [
     {

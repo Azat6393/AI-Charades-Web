@@ -1,0 +1,12 @@
+name = "ai-charades"
+compatibility_date = "2026-07-06"
+pages_build_output_dir = "dist"
+
+# One-time setup:
+#   npx wrangler d1 create ai-charades-waitlist
+# then paste the printed database_id below and apply the schema:
+#   npx wrangler d1 execute ai-charades-waitlist --remote --file=db/schema.sql
+[[d1_databases]]
+binding = "DB"
+database_name = "ai-charades-waitlist"
+database_id = "fe5b01c7-43a9-49a7-af7b-46aa538e6d99"

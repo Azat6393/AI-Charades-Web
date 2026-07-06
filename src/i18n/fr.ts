@@ -19,6 +19,7 @@ export const fr: Dictionary = {
       "Déjouez une IA vraiment maligne dans une partie solo de 20 Questions, puis passez le téléphone pour un mimes endiablé entre amis. Plus de 40 packs de mots, un nouveau Mot du Jour, et des paquets personnalisés générés par IA. Aucune configuration — on joue direct.",
     micro: "Gratuit",
     imageAlt: "Écran d'accueil d'AI Charades montrant les modes IA Solo et Mimes",
+    imageAlt2: "Mode solo d'AI Charades : deviner le mot Spider-Man en posant des questions oui/non à l'IA",
   },
   trust: {
     items: [
@@ -118,6 +119,16 @@ export const fr: Dictionary = {
   storeBadges: {
     appStoreAria: "Télécharger AI Charades sur l'App Store",
     playStoreAria: "Obtenir AI Charades sur Google Play",
+  },
+  waitlist: {
+    title: "Bientôt disponible !",
+    body: "AI Charades n'est pas encore sur les stores. Laissez votre e-mail et nous vous préviendrons dès sa sortie.",
+    emailPlaceholder: "you@example.com",
+    submit: "Prévenez-moi",
+    success: "Vous êtes sur la liste ! À très vite. 🎉",
+    error: "Une erreur s'est produite — veuillez réessayer.",
+    close: "Fermer",
+    note: "Un seul e-mail au lancement. Jamais de spam.",
   },
   faq: [
     {
