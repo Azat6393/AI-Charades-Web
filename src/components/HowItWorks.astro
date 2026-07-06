@@ -1,0 +1,70 @@
+---
+import type { Dictionary } from "../i18n/types";
+
+interface Props {
+  dict: Dictionary;
+}
+const { dict } = Astro.props;
+const numColors = ["--fiesta-primary", "--fiesta-pink", "--fiesta-green"];
+---
+
+<section class="section how reveal">
+  <div class="container">
+    <h2 class="center">{dict.howItWorks.h2}</h2>
+    <ol class="steps reveal-stagger">
+      {dict.howItWorks.steps.map((s, i) => (
+        <li class="card card--lift step">
+          <span class="step-num" style={`background: var(${numColors[i % numColors.length]})`}>{i + 1}</span>
+          <h3>{s.title}</h3>
+          <p>{s.body}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .center { text-align: center; margin-bottom: 2.5rem; }
+  .steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.75rem;
+    counter-reset: step;
+  }
+  .step {
+    padding: 2rem 1.75rem;
+    position: relative;
+  }
+  .step:nth-child(odd) { rotate: -1deg; }
+  .step:nth-child(even) { rotate: 1deg; }
+  .step:hover { rotate: 0deg; }
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    border: 2px solid var(--fiesta-ink);
+    box-shadow: var(--shadow-sticker-sm);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    rotate: -6deg;
+  }
+  .step p { margin-bottom: 0; color: var(--ink-muted); }
+  @media (min-width: 800px) {
+    .steps { grid-template-columns: repeat(3, 1fr); }
+    .step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 3rem;
+      inset-inline-end: -1.9rem;
+      width: 2rem;
+      border-top: 3px dashed rgba(26, 20, 16, 0.3);
+    }
+  }
+</style>

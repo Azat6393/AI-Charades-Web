@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Hero from "../../components/Hero.astro";
+import TrustStrip from "../../components/TrustStrip.astro";
+import ModeSolo from "../../components/ModeSolo.astro";
+import ModeParty from "../../components/ModeParty.astro";
+import HowItWorks from "../../components/HowItWorks.astro";
+import PackGrid from "../../components/PackGrid.astro";
+import FeatureGrid from "../../components/FeatureGrid.astro";
+import Occasions from "../../components/Occasions.astro";
+import Faq from "../../components/Faq.astro";
+import FinalCta from "../../components/FinalCta.astro";
+import Footer from "../../components/Footer.astro";
+import { localeCodes, getDictionary } from "../../i18n";
+
+export function getStaticPaths() {
+  return localeCodes.filter((lang) => lang !== "en").map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const dict = getDictionary(lang as string);
+---
+
+<BaseLayout
+  title={dict.meta.title}
+  description={dict.meta.description}
+  path={`/${lang}/`}
+  lang={lang as string}
+  dict={dict}
+>
+  <Header dict={dict} lang={lang as string} />
+  <main>
+    <Hero dict={dict} />
+    <TrustStrip dict={dict} />
+    <ModeSolo dict={dict} />
+    <ModeParty dict={dict} />
+    <HowItWorks dict={dict} />
+    <PackGrid dict={dict} />
+    <FeatureGrid dict={dict} />
+    <Occasions dict={dict} />
+    <Faq dict={dict} />
+    <FinalCta dict={dict} />
+  </main>
+  <Footer dict={dict} lang={lang as string} />
+</BaseLayout>

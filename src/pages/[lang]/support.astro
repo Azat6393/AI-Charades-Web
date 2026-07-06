@@ -1,0 +1,32 @@
+---
+import LegalLayout from "../../layouts/LegalLayout.astro";
+import { site } from "../../data/site";
+import { localeCodes, getLegalDictionary, getDictionary, tpl, localePath } from "../../i18n";
+
+export function getStaticPaths() {
+  return localeCodes.filter((lang) => lang !== "en").map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const legal = getLegalDictionary(lang as string).support;
+const dict = getDictionary(lang as string);
+---
+
+<LegalLayout
+  title={legal.metaTitle}
+  description={legal.metaDescription}
+  path={`/${lang}/support`}
+  lang={lang as string}
+>
+  <h1>{legal.h1}</h1>
+  <p>{legal.intro}</p>
+  <p set:html={tpl(legal.emailIntro, lang as string)} />
+
+  <h2>{legal.commonQuestionsH2}</h2>
+  <p set:html={tpl(legal.commonQuestionsBody, lang as string)} />
+
+  <h2>{legal.legalH2}</h2>
+  <p>
+    <a href={localePath(lang as string, "/privacy-policy/")}>{dict.footer.privacy}</a> · <a href={localePath(lang as string, "/terms/")}>{dict.footer.terms}</a>
+  </p>
+</LegalLayout>

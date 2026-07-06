@@ -1,0 +1,77 @@
+---
+import StoreBadges from "./StoreBadges.astro";
+import Mascot from "./Mascot.astro";
+import type { Dictionary } from "../i18n/types";
+
+interface Props {
+  dict: Dictionary;
+}
+const { dict } = Astro.props;
+---
+
+<section id="final-cta" class="section final-cta scallop-top reveal" style="--scallop: var(--fiesta-bg)">
+  <div class="cta-confetti" aria-hidden="true">
+    <svg class="deco d1" viewBox="0 0 40 40" fill="none"><path d="M20 2 L24 15 L38 16 L26 24 L30 38 L20 29 L10 38 L14 24 L2 16 L16 15 Z" fill="#fff" stroke="var(--fiesta-ink)" stroke-width="2.5" stroke-linejoin="round"/></svg>
+    <svg class="deco d2" viewBox="0 0 30 28" fill="none"><path d="M15 3 L27 24 H3 Z" fill="var(--fiesta-accent)" stroke="var(--fiesta-ink)" stroke-width="2.5" stroke-linejoin="round"/></svg>
+    <svg class="deco d3" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" fill="var(--fiesta-blue)" stroke="var(--fiesta-ink)" stroke-width="2.5"/></svg>
+    <svg class="deco d4" viewBox="0 0 72 20" fill="none"><path d="M2 14 Q11 2 20 12 Q29 22 38 10 Q47 -2 56 10 Q62 18 70 8" stroke="var(--fiesta-ink)" stroke-width="4.5" stroke-linecap="round" opacity="0.5"/></svg>
+  </div>
+  <div class="container final-inner">
+    <Mascot class="final-mascot" mood="wink" />
+    <h2>{dict.finalCta.h2}</h2>
+    <p>{dict.finalCta.body}</p>
+    <StoreBadges dict={dict} size="lg" />
+  </div>
+</section>
+
+<style>
+  .final-cta {
+    position: relative;
+    background-color: var(--fiesta-primary);
+    background-image: radial-gradient(rgba(26, 20, 16, 0.07) 1.3px, transparent 1.6px);
+    background-size: 24px 24px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .cta-confetti {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .deco {
+    position: absolute;
+    animation: cta-float 5s ease-in-out infinite;
+  }
+  .d1 { width: 46px; inset-inline-start: 10%; top: 20%; }
+  .d2 { width: 30px; inset-inline-end: 12%; top: 26%; animation-delay: -1.8s; }
+  .d3 { width: 18px; inset-inline-start: 20%; bottom: 18%; animation-delay: -3s; }
+  .d4 { width: 70px; inset-inline-end: 8%; bottom: 22%; animation-delay: -2.4s; }
+  @keyframes cta-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(8deg); }
+  }
+  .final-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  :global(.final-mascot) {
+    width: 128px;
+    margin-bottom: 0.5rem;
+    animation: mascot-party 2.6s ease-in-out infinite;
+  }
+  @keyframes mascot-party {
+    0%, 100% { rotate: -5deg; translate: 0 0; }
+    50% { rotate: 5deg; translate: 0 -8px; }
+  }
+  .final-inner p {
+    max-width: 46ch;
+    font-size: 1.125rem;
+  }
+  .final-inner :global(.store-badges) {
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+</style>

@@ -1,0 +1,122 @@
+---
+import { Image } from "astro:assets";
+import chatScreenshot from "../assets/screenshots/ai-solo-chat.png";
+import Mascot from "./Mascot.astro";
+import type { Dictionary } from "../i18n/types";
+
+interface Props {
+  dict: Dictionary;
+}
+const { dict } = Astro.props;
+---
+
+<section id="modes" class="section section--peach mode-section reveal">
+  <div class="container mode-grid">
+    <div class="mode-copy">
+      <p class="eyebrow">{dict.modeSolo.eyebrow}</p>
+      <h2>{dict.modeSolo.h2}</h2>
+      <p>
+        {dict.modeSolo.body}
+      </p>
+      <ul class="bullets">
+        {dict.modeSolo.bullets.map((b) => <li>{b}</li>)}
+      </ul>
+    </div>
+    <div class="mode-visual">
+      <div class="phone-frame sticker">
+        <Image
+          src={chatScreenshot}
+          alt={dict.modeSolo.imageAlt}
+          width={340}
+          loading="lazy"
+        />
+      </div>
+      <Mascot class="mode-mascot" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .mode-section {
+    overflow: hidden;
+    position: relative;
+  }
+  .mode-section::after {
+    content: "";
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    border: 3px dashed rgba(26, 20, 16, 0.12);
+    top: -120px;
+    inset-inline-end: -110px;
+    pointer-events: none;
+  }
+  .mode-grid {
+    display: grid;
+    gap: clamp(2rem, 6vw, 4rem);
+    align-items: center;
+    position: relative;
+  }
+  .bullets {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    display: grid;
+    gap: 0.85rem;
+  }
+  .bullets li {
+    padding-inline-start: 2.25rem;
+    position: relative;
+    font-weight: 600;
+  }
+  .bullets li::before {
+    content: "✓";
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0.1em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: var(--fiesta-green);
+    border: 2px solid var(--fiesta-ink);
+    color: var(--fiesta-ink);
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .mode-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .phone-frame {
+    max-width: 300px;
+    border-radius: 36px;
+    overflow: hidden;
+    border: 4px solid var(--fiesta-ink);
+    background: var(--fiesta-card);
+    box-shadow: -12px 14px 0 rgba(26, 20, 16, 0.14);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .phone-frame:hover { transform: rotate(0deg) translateY(-6px); }
+  .phone-frame :global(img) { display: block; width: 100%; height: auto; }
+  :global(.mode-mascot) {
+    position: absolute;
+    width: 92px;
+    top: -24px;
+    inset-inline-start: -16px;
+    transform: rotate(-8deg);
+    animation: mascot-peek 4s ease-in-out infinite;
+  }
+  @keyframes mascot-peek {
+    0%, 100% { rotate: 0deg; }
+    50% { rotate: 7deg; }
+  }
+  @media (min-width: 900px) {
+    .mode-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>

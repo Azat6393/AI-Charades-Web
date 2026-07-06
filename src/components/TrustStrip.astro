@@ -1,0 +1,94 @@
+---
+import { site } from "../data/site";
+import { tpl } from "../i18n";
+import type { Dictionary } from "../i18n/types";
+
+interface Props {
+  dict: Dictionary;
+}
+const { dict } = Astro.props;
+const items = dict.trust.items.map((item) => tpl(item));
+---
+
+<div class="trust-strip">
+  <div class="ticker" role="list">
+    <ul class="ticker-track">
+      {items.map((item) => <li role="listitem">{item}</li>)}
+      {items.map((item) => <li aria-hidden="true">{item}</li>)}
+      {items.map((item) => <li aria-hidden="true">{item}</li>)}
+    </ul>
+  </div>
+  {site.rating && (
+    <p class="rating">★ {site.rating.value.toFixed(1)} {dict.trust.rating}</p>
+  )}
+</div>
+
+<style>
+  .trust-strip {
+    background: var(--fiesta-primary);
+    border-block: 2px solid var(--fiesta-ink);
+    padding-block: 1rem;
+    overflow: hidden;
+  }
+  .ticker {
+    overflow: hidden;
+    display: flex;
+  }
+  .ticker-track {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 2.5rem;
+    padding-inline-end: 2.5rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    white-space: nowrap;
+    animation: ticker-scroll 28s linear infinite;
+  }
+  .ticker:hover .ticker-track {
+    animation-play-state: paused;
+  }
+  .ticker-track li {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  .ticker-track li::after {
+    content: "★";
+    font-size: 0.8em;
+  }
+  @keyframes ticker-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-100% / 3)); }
+  }
+  :global([dir="rtl"]) .ticker-track {
+    animation-name: ticker-scroll-rtl;
+  }
+  @keyframes ticker-scroll-rtl {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(100% / 3)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track {
+      animation: none;
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+      white-space: normal;
+      gap: 0.5rem 2rem;
+    }
+    .ticker-track li { gap: 2rem; }
+    .ticker-track li[aria-hidden="true"] { display: none; }
+    .ticker-track li:last-of-type::after { content: none; }
+  }
+  .rating {
+    text-align: center;
+    margin: 0.6rem 0 0;
+    font-weight: 600;
+    font-size: 0.9375rem;
+  }
+</style>

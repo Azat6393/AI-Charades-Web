@@ -1,0 +1,13 @@
+{
+  "name": "AI Charades",
+  "short_name": "AI Charades",
+  "description": "The word game with a brain",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5E9C9",
+  "theme_color": "#FFD43B",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

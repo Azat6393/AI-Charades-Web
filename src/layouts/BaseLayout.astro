@@ -1,0 +1,53 @@
+---
+import Seo from "../components/Seo.astro";
+import "../styles/fonts.css";
+import "../styles/tokens.css";
+import { getLocaleInfo } from "../i18n/locales";
+import type { Dictionary } from "../i18n/types";
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string;
+  noindex?: boolean;
+  lang: string;
+  dict?: Dictionary;
+}
+const { title, description, path, noindex, lang, dict } = Astro.props;
+const { dir } = getLocaleInfo(lang);
+---
+
+<!doctype html>
+<html lang={lang} dir={dir}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preload" href="/fonts/baloo2-700.woff2" as="font" type="font/woff2" crossorigin />
+    <Seo title={title} description={description} path={path} noindex={noindex} lang={lang} dict={dict} />
+    <noscript>
+      <style>
+        .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; }
+      </style>
+    </noscript>
+  </head>
+  <body>
+    <slot />
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          }
+        },
+        { threshold: 0.15 }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

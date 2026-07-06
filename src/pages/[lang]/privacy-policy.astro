@@ -1,0 +1,39 @@
+---
+import LegalLayout from "../../layouts/LegalLayout.astro";
+import { site } from "../../data/site";
+import { localeCodes, getLegalDictionary, tpl } from "../../i18n";
+
+export function getStaticPaths() {
+  return localeCodes.filter((lang) => lang !== "en").map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const legal = getLegalDictionary(lang as string).privacy;
+---
+
+<LegalLayout
+  title={legal.metaTitle}
+  description={legal.metaDescription}
+  path={`/${lang}/privacy-policy`}
+  lang={lang as string}
+>
+  <h1>{legal.h1}</h1>
+  <p>
+    <strong>{legal.effectiveDate}</strong> {legal.dateValue}<br />
+    <strong>{legal.lastUpdated}</strong> {legal.dateValue}
+  </p>
+
+  {legal.intro.map((p) => <p set:html={p} />)}
+
+  <p>
+    <strong>{legal.contactLabel}</strong> <a href={`mailto:${site.supportEmail}`}>{site.supportEmail}</a><br />
+    <strong>{legal.appIdLabel}</strong> <code>ai.charades.game</code>
+  </p>
+
+  {legal.sections.map((section) => (
+    <Fragment>
+      <h2>{section.h2}</h2>
+      {section.body.map((block) => <Fragment set:html={tpl(block, lang as string)} />)}
+    </Fragment>
+  ))}
+</LegalLayout>

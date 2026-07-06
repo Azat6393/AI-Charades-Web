@@ -1,0 +1,80 @@
+---
+import { tpl } from "../i18n";
+import type { Dictionary } from "../i18n/types";
+
+interface Props {
+  dict: Dictionary;
+}
+const { dict } = Astro.props;
+const features = dict.featureGrid.features.map((f) => ({ ...f, title: tpl(f.title) }));
+const accents = ["--fiesta-primary", "--fiesta-green", "--fiesta-purple", "--fiesta-blue", "--fiesta-pink", "--fiesta-primary"];
+---
+
+<section class="section reveal">
+  <div class="container">
+    <h2 class="center">{dict.featureGrid.h2}</h2>
+    <ul class="feature-grid reveal-stagger">
+      {features.map((f, i) => (
+        <li class="card card--lift feature" style={`--accent: var(${accents[i]})`}>
+          <span class="icon">{f.icon}</span>
+          <h3>{f.title}</h3>
+          <p>{f.body}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .center { text-align: center; margin-bottom: 2.5rem; }
+  .feature-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.5rem;
+  }
+  .feature {
+    padding: 1.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .feature::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    inset-inline: 0;
+    height: 6px;
+    background: var(--accent);
+    border-bottom: 2px solid var(--fiesta-ink);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .feature:hover::before { opacity: 1; }
+  .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: var(--radius-md);
+    border: 2px solid var(--fiesta-ink);
+    background: var(--accent);
+    box-shadow: var(--shadow-sticker-sm);
+    font-size: 1.5rem;
+    margin-bottom: 1.1rem;
+    rotate: -4deg;
+    transition: rotate 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), scale 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .feature:hover .icon {
+    rotate: 4deg;
+    scale: 1.1;
+  }
+  .feature p { color: var(--ink-muted); margin-bottom: 0; }
+  @media (min-width: 700px) {
+    .feature-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1000px) {
+    .feature-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>

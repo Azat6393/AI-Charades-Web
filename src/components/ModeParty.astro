@@ -1,0 +1,105 @@
+---
+import { Image } from "astro:assets";
+import partyScreenshot from "../assets/screenshots/party-gameplay.png";
+import type { Dictionary } from "../i18n/types";
+
+interface Props {
+  dict: Dictionary;
+}
+const { dict } = Astro.props;
+---
+
+<section class="section section--mint mode-section scallop-top reveal" style="--scallop: var(--fiesta-peach)">
+  <div class="container mode-grid">
+    <div class="mode-visual">
+      <div class="phone-frame sticker--right">
+        <Image
+          src={partyScreenshot}
+          alt={dict.modeParty.imageAlt}
+          width={420}
+          loading="lazy"
+        />
+      </div>
+    </div>
+    <div class="mode-copy">
+      <p class="eyebrow">{dict.modeParty.eyebrow}</p>
+      <h2>{dict.modeParty.h2}</h2>
+      <p>
+        {dict.modeParty.body}
+      </p>
+      <ul class="bullets">
+        {dict.modeParty.bullets.map((b) => <li>{b}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mode-section {
+    overflow: hidden;
+    position: relative;
+  }
+  .mode-section::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 3px dashed rgba(26, 20, 16, 0.12);
+    bottom: -110px;
+    inset-inline-start: -100px;
+    pointer-events: none;
+  }
+  .mode-grid {
+    display: grid;
+    gap: clamp(2rem, 6vw, 4rem);
+    align-items: center;
+    position: relative;
+  }
+  .bullets {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    display: grid;
+    gap: 0.85rem;
+  }
+  .bullets li {
+    padding-inline-start: 2.25rem;
+    position: relative;
+    font-weight: 600;
+  }
+  .bullets li::before {
+    content: "✓";
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0.1em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: var(--fiesta-green);
+    border: 2px solid var(--fiesta-ink);
+    color: var(--fiesta-ink);
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .mode-visual { display: flex; justify-content: center; }
+  .phone-frame {
+    max-width: 420px;
+    width: 100%;
+    border-radius: 28px;
+    overflow: hidden;
+    border: 4px solid var(--fiesta-ink);
+    background: var(--fiesta-card);
+    box-shadow: 12px 14px 0 rgba(26, 20, 16, 0.14);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .phone-frame:hover { transform: rotate(0deg) translateY(-6px); }
+  .phone-frame :global(img) { display: block; width: 100%; height: auto; }
+  @media (min-width: 900px) {
+    .mode-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>

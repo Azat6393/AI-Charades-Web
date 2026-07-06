@@ -1,0 +1,47 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { getDictionary } from "../i18n";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  lang: string;
+}
+const { title, description, path, lang } = Astro.props;
+const dict = getDictionary(lang);
+---
+
+{/* dict deliberately not passed to BaseLayout: FAQ JSON-LD must only appear on pages that render the FAQ */}
+<BaseLayout title={title} description={description} path={path} lang={lang}>
+  <Header dict={dict} lang={lang} />
+  <main class="section legal-main">
+    <div class="container narrow">
+      <slot />
+    </div>
+  </main>
+  <Footer dict={dict} lang={lang} />
+</BaseLayout>
+
+<style>
+  .legal-main :global(h1) { font-size: clamp(2rem, 5vw, 2.75rem); }
+  .legal-main :global(h2) { font-size: 1.5rem; margin-top: 2.5rem; }
+  .legal-main :global(p),
+  .legal-main :global(li) { color: var(--ink-muted); }
+  .legal-main :global(a) { color: var(--fiesta-accent); font-weight: 600; }
+  .legal-main :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+  .legal-main :global(th),
+  .legal-main :global(td) {
+    border: 1px solid var(--hairline);
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  .narrow { max-width: 780px; }
+</style>

@@ -1,0 +1,27 @@
+---
+import LegalLayout from "../layouts/LegalLayout.astro";
+import { getLegalDictionary, getDictionary, tpl } from "../i18n";
+
+const lang = "en";
+const legal = getLegalDictionary(lang).support;
+const dict = getDictionary(lang);
+---
+
+<LegalLayout
+  title={legal.metaTitle}
+  description={legal.metaDescription}
+  path="/support"
+  lang={lang}
+>
+  <h1>{legal.h1}</h1>
+  <p>{legal.intro}</p>
+  <p set:html={tpl(legal.emailIntro, lang)} />
+
+  <h2>{legal.commonQuestionsH2}</h2>
+  <p set:html={tpl(legal.commonQuestionsBody, lang)} />
+
+  <h2>{legal.legalH2}</h2>
+  <p>
+    <a href="/privacy-policy/">{dict.footer.privacy}</a> · <a href="/terms/">{dict.footer.terms}</a>
+  </p>
+</LegalLayout>

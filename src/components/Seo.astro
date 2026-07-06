@@ -1,0 +1,112 @@
+---
+import { site } from "../data/site";
+import { locales, defaultLocale } from "../i18n/locales";
+import type { Dictionary } from "../i18n/types";
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string;
+  noindex?: boolean;
+  lang?: string;
+  dict?: Dictionary;
+}
+
+const { title, description, path = "/", noindex = false, lang, dict } = Astro.props;
+// The static build serves directory URLs (/de/support/), so canonicals and
+// hreflang must use the trailing-slash form to match the served URL.
+const normalizedPath = path.endsWith("/") ? path : `${path}/`;
+const canonical = new URL(normalizedPath, site.domain).toString();
+const ogImage = new URL("/og/og-cover.png", site.domain).toString();
+
+// path is like /de/ or /privacy-policy/ — strip the locale prefix (if any) to get the page path
+const pathWithoutLocale = lang
+  ? normalizedPath.replace(new RegExp(`^/${lang}(/|$)`), "/") || "/"
+  : normalizedPath;
+const alternates = locales.map((l) => ({
+  hreflang: l.code,
+  href: new URL(
+    l.code === defaultLocale ? pathWithoutLocale : `/${l.code}${pathWithoutLocale}`,
+    site.domain
+  ).toString(),
+}));
+const xDefaultHref = new URL(pathWithoutLocale, site.domain).toString();
+const faq = dict?.faq ?? [];
+
+const storeUrls = [site.appStoreUrl, site.playStoreUrl].filter(
+  (url) => !url.startsWith("TODO")
+);
+
+const softwareApplicationLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: site.name,
+  applicationCategory: "GameApplication",
+  operatingSystem: "iOS, Android",
+  description:
+    dict?.meta.description ??
+    "Two word games in one: outsmart a smart AI in solo 20-Questions, then pass the phone for heads-up charades. 40+ packs, a Daily Word, 19 languages.",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  url: site.domain + "/",
+  ...(storeUrls.length > 0 ? { downloadUrl: storeUrls } : {}),
+  ...(site.rating
+    ? {
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: site.rating.value,
+          ratingCount: site.rating.count,
+        },
+      }
+    : {}),
+};
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+
+const orgLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: site.name,
+  url: site.domain + "/",
+  logo: new URL("/og/og-cover.png", site.domain).toString(),
+  sameAs: storeUrls,
+};
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{lang && alternates.map((a) => (
+  <link rel="alternate" hreflang={a.hreflang} href={a.href} />
+))}
+{lang && <link rel="alternate" hreflang="x-default" href={xDefaultHref} />}
+<meta name="theme-color" content="#FFD43B" />
+<meta name="robots" content={noindex ? "noindex,nofollow" : "index,follow,max-image-preview:large"} />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:alt" content="AI Charades — two word games in one, on iPhone and Android" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+{!site.appStoreId.startsWith("TODO") && (
+  <meta name="apple-itunes-app" content={`app-id=${site.appStoreId}`} />
+)}
+
+<script type="application/ld+json" set:html={JSON.stringify(softwareApplicationLd)} />
+{faq.length > 0 && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
+<script type="application/ld+json" set:html={JSON.stringify(orgLd)} />

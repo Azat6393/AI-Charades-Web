@@ -1,0 +1,132 @@
+---
+import { Image } from "astro:assets";
+import categoryScreenshot from "../assets/screenshots/categories.png";
+import customCategoryScreenshot from "../assets/screenshots/custom-category.png";
+import type { Dictionary } from "../i18n/types";
+
+interface Props {
+  dict: Dictionary;
+}
+const { dict } = Astro.props;
+const accents = ["--fiesta-primary", "--fiesta-green", "--fiesta-blue", "--fiesta-purple", "--fiesta-pink"];
+---
+
+<section id="packs" class="section section--surface scallop-top reveal" style="--scallop: var(--fiesta-mint)">
+  <div class="container">
+    <div class="center-head">
+      <p class="eyebrow">{dict.packGrid.eyebrow}</p>
+      <h2>{dict.packGrid.h2}</h2>
+      <p class="intro">
+        {dict.packGrid.intro}
+      </p>
+    </div>
+
+    <ul class="chip-grid">
+      {dict.categories.map((cat, i) => (
+        <li class="chip" style={`--chip-color: var(${accents[i % accents.length]})`}>{cat}</li>
+      ))}
+    </ul>
+
+    <div class="pack-showcase">
+      <div class="phone-frame sticker">
+        <Image
+          src={categoryScreenshot}
+          alt={dict.packGrid.categoryImageAlt}
+          width={300}
+          loading="lazy"
+        />
+      </div>
+      <div class="custom-card card card--lift">
+        <p class="badge">{dict.packGrid.customBadge}</p>
+        <p class="custom-body">
+          {dict.packGrid.customBody}
+        </p>
+        <div class="phone-frame small">
+          <Image
+            src={customCategoryScreenshot}
+            alt={dict.packGrid.customImageAlt}
+            width={260}
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .center-head { text-align: center; }
+  .intro { max-width: 60ch; margin: 0 auto 2rem; color: var(--ink-muted); }
+  .chip-grid {
+    list-style: none;
+    margin: 0 0 2.5rem;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.7rem;
+  }
+  .chip {
+    background: var(--chip-color);
+    border: 2px solid var(--fiesta-ink);
+    border-radius: var(--radius-pill);
+    padding: 0.5rem 1.1rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    box-shadow: var(--shadow-sticker-sm);
+    transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .chip:nth-child(odd) { rotate: -1.5deg; }
+  .chip:nth-child(even) { rotate: 1.5deg; }
+  .chip:hover {
+    transform: translateY(-3px) scale(1.06);
+    rotate: 0deg;
+  }
+  .pack-showcase {
+    display: grid;
+    gap: 2.5rem;
+    align-items: start;
+    justify-items: center;
+  }
+  .phone-frame {
+    max-width: 260px;
+    border-radius: 32px;
+    overflow: hidden;
+    border: 4px solid var(--fiesta-ink);
+    background: var(--fiesta-card);
+    box-shadow: -10px 12px 0 rgba(26, 20, 16, 0.14);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .phone-frame.sticker:hover { transform: rotate(0deg) translateY(-6px); }
+  .phone-frame :global(img) { display: block; width: 100%; height: auto; }
+  .phone-frame.small {
+    max-width: 220px;
+    margin: 1.5rem auto 0;
+    box-shadow: none;
+  }
+  .custom-card {
+    padding: 2rem;
+    max-width: 400px;
+    text-align: center;
+    rotate: 1deg;
+  }
+  .badge {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    background: var(--fiesta-purple);
+    color: #fff;
+    border: 2px solid var(--fiesta-ink);
+    border-radius: var(--radius-pill);
+    padding: 0.35rem 1rem;
+    box-shadow: var(--shadow-sticker-sm);
+    rotate: -2deg;
+    margin-bottom: 1rem;
+  }
+  .custom-body { color: var(--ink-muted); }
+  @media (min-width: 860px) {
+    .pack-showcase { grid-template-columns: 1fr 1fr; }
+  }
+</style>

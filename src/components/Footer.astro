@@ -1,0 +1,103 @@
+---
+import { Image } from "astro:assets";
+import { site } from "../data/site";
+import logo from "../assets/brand/logo.png";
+import type { Dictionary } from "../i18n/types";
+import { localePath, locales } from "../i18n";
+
+interface Props {
+  dict: Dictionary;
+  lang: string;
+}
+const { dict, lang } = Astro.props;
+const home = localePath(lang, "/");
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="brand">
+      <p class="logo">
+        <Image src={logo} alt="" width={32} height={32} class="logo-mark" />
+        {site.name}
+      </p>
+      <p class="tagline">{dict.footer.tagline}.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href={`${home}#modes`}>{dict.footer.modes}</a>
+      <a href={`${home}#packs`}>{dict.footer.packs}</a>
+      <a href={`${home}#faq`}>{dict.footer.faq}</a>
+      <a href={`mailto:${site.supportEmail}`}>{dict.footer.support}</a>
+      <a href={localePath(lang, "/privacy-policy/")}>{dict.footer.privacy}</a>
+      <a href={localePath(lang, "/terms/")}>{dict.footer.terms}</a>
+    </nav>
+  </div>
+  <div class="container languages">
+    <nav aria-label="Languages">
+      {locales.map((l) => (
+        <a href={localePath(l.code, "/")} lang={l.code} aria-current={l.code === lang ? "page" : undefined}>
+          {l.nativeLabel}
+        </a>
+      ))}
+    </nav>
+  </div>
+  <div class="container legal">
+    <p>© {year} {site.name}. {dict.footer.copyright}</p>
+    <p>{dict.footer.availableOn}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 2px solid var(--hairline);
+    padding-block: 3rem 1.5rem;
+    background: var(--fiesta-surface);
+  }
+  .footer-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin: 0;
+  }
+  .logo-mark { border-radius: 8px; }
+  .tagline { color: var(--ink-muted); margin: 0.25rem 0 0; }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    font-weight: 600;
+  }
+  nav a { text-decoration: none; }
+  nav a:hover { color: var(--fiesta-accent); }
+  .languages nav {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--hairline);
+    gap: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  .languages a { color: var(--ink-muted); }
+  .languages a[aria-current="page"] { color: var(--ink); font-weight: 700; }
+  .legal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--hairline);
+    font-size: 0.875rem;
+    color: var(--ink-muted);
+  }
+  .legal p { margin: 0; }
+</style>
