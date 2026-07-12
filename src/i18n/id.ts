@@ -2,9 +2,9 @@ import type { Dictionary } from "./types";
 
 export const id: Dictionary = {
   meta: {
-    title: "AI Charades — Game Tebak Kata Seru dengan AI Cerdas",
+    title: "AI Charades — Game Tebak Kata & Tebak Gaya, plus 20 Pertanyaan lawan AI",
     description:
-      "AI Charades adalah dua game tebak kata dalam satu aplikasi: kalahkan kecerdasan AI di mode solo 20 Pertanyaan, lalu oper HP untuk main charades klasik bareng teman. 40+ paket kata, Kata Harian, 19 bahasa. Gratis di iOS & Android.",
+      "Main tebak gaya di HP: mode pesta tempel HP di dahi yang jalan tanpa internet, plus 20 Pertanyaan melawan AI sungguhan. 40+ paket kata, dek kustom buatan AI, Kata Harian, 19 bahasa. Gratis di iPhone & Android.",
   },
   header: {
     modes: "Mode",

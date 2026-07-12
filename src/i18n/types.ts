@@ -13,6 +13,8 @@ export interface Dictionary {
     packs: string;
     faq: string;
     getApp: string;
+    /** Optional "Guides" nav label; the guides section only exists in English. */
+    guides?: string;
   };
   hero: {
     eyebrow: string;
@@ -77,6 +79,7 @@ export interface Dictionary {
     support: string;
     privacy: string;
     terms: string;
+    guides?: string;
     copyright: string; // "All rights reserved."
     availableOn: string;
   };

@@ -1,0 +1,83 @@
+---
+import { Image } from "astro:assets";
+import GuideLayout from "../../layouts/GuideLayout.astro";
+import { getGuide } from "../../data/guides";
+import partySetup from "../../assets/screenshots/party-setup.png";
+
+const guide = getGuide("charades-for-kids");
+
+const age4 = ["Dog", "Cat", "Bunny", "Sleeping", "Eating", "Jumping", "Fish", "Bird", "Airplane", "Car", "Clapping", "Crying", "Monkey", "Frog", "Dancing"];
+const age7 = ["Brushing teeth", "Elephant", "Basketball", "Swimming", "Superhero", "Pizza", "Robot", "Firefighter", "Penguin", "Riding a bike", "Snowman", "Butterfly", "Dinosaur", "Playing drums", "Ice cream cone", "Astronaut", "Kangaroo", "Fishing", "Ballerina", "Washing hands"];
+const age10 = ["Rollercoaster", "Taking a selfie", "Video game", "Walking a dog", "Making a sandwich", "Skateboarding", "Teacher", "Magician", "Volcano", "Rock climbing", "Playing chess", "Juggling", "Werewolf", "Surfing", "Building a sandcastle", "Cheerleader", "Karate", "Texting", "Vacuuming", "Photographer"];
+
+const faq = [
+  {
+    q: "What age is charades good for?",
+    a: "From about 4 and up. Younger kids do best guessing simple animals and actions with no timer; from 7+ they can act on their own; from 10+ they can handle movies, phrases and standard 60-second rounds.",
+  },
+  {
+    q: "What are easy charades words for kids?",
+    a: "Animals and everyday actions they can act with their whole body: dog, bunny, sleeping, eating, jumping, airplane, brushing teeth, superhero.",
+  },
+  {
+    q: "How do you make charades easier for young kids?",
+    a: "Use a longer timer (90 seconds or none), let them make sounds, allow a grown-up helper on stage, and stick to picture-friendly categories like animals and food.",
+  },
+  {
+    q: "Is there a kid-friendly charades app?",
+    a: "AI Charades includes kid-friendly packs like Animals, Food, Cartoons and Emojis, adjustable round lengths, and an easy difficulty — and the party mode works offline, so no ads or browsing mid-game.",
+  },
+];
+---
+
+<GuideLayout guide={guide} faq={faq}>
+  <h1>Charades for kids: easy words & simple rules by age</h1>
+  <p>
+    Charades is one of the few games a 5-year-old, a teenager and a grandparent can
+    genuinely play together — no reading required, no pieces to lose, and the sillier
+    the acting, the better. Here are kid-friendly rules, 55+ easy charades words
+    sorted by age, and how to run the whole game from one phone.
+  </p>
+
+  <h2>Kid-friendly rules (simpler than the adult game)</h2>
+  <ol>
+    <li><strong>No teams needed</strong> — one kid acts, everyone else guesses, whoever guesses right acts next.</li>
+    <li><strong>Relax the silence rule</strong> for little ones: animal sounds allowed!</li>
+    <li><strong>Longer timer or no timer.</strong> 90 seconds keeps the pressure friendly.</li>
+    <li><strong>Give the category out loud</strong> ("it's an animal!") so kids start guessing straight away.</li>
+    <li><strong>Everyone wins something</strong> — count "funniest performance" alongside points.</li>
+  </ol>
+
+  <h2>Easy charades words for ages 4–6</h2>
+  <ul class="word-grid">{age4.map((w) => <li>{w}</li>)}</ul>
+
+  <h2>Charades words for ages 7–9</h2>
+  <ul class="word-grid">{age7.map((w) => <li>{w}</li>)}</ul>
+
+  <h2>Charades words for ages 10–12</h2>
+  <ul class="word-grid">{age10.map((w) => <li>{w}</li>)}</ul>
+
+  <h2>Family charades on one phone</h2>
+  <p>
+    Paper slips don't survive small hands. In <strong>AI Charades</strong> the party
+    mode replaces the whole setup — and because it works offline, kids aren't one tap
+    away from the internet mid-game:
+  </p>
+  <figure>
+    <Image src={partySetup} alt="Setting up a family charades game in AI Charades: players, 90-second rounds and kid-friendly packs like Animals" width={340} loading="lazy" />
+    <figcaption>Pick 90-second rounds and kid-friendly packs like Animals and Food.</figcaption>
+  </figure>
+  <ul>
+    <li><strong>Pick kid-safe packs:</strong> Animals, Food & Drinks, Cartoons, Emojis, Colors & Shapes.</li>
+    <li><strong>Set 90-second rounds</strong> and tap-only scoring if tilting is tricky for small players.</li>
+    <li><strong>Make a custom pack for your family</strong> — pets' names, favorite shows, holiday words — or <a href="/guides/charades-word-generator/">let the AI generate one</a> ("dinosaurs a 6-year-old knows").</li>
+    <li><strong>The app keeps score</strong>, so nobody argues about who's winning. Well. Almost nobody.</li>
+  </ul>
+  <div class="callout">
+    <p>
+      Full rules and hand signals live in
+      <a href="/guides/how-to-play-charades/">how to play charades</a>; older kids love
+      the phone-on-forehead version in <a href="/guides/how-to-play-heads-up/">how to play Heads Up</a>.
+    </p>
+  </div>
+</GuideLayout>

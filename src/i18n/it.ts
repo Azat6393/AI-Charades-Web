@@ -2,9 +2,9 @@ import type { Dictionary } from "./types";
 
 export const it: Dictionary = {
   meta: {
-    title: "AI Charades — Il Gioco di Parole con un'IA Intelligente",
+    title: "AI Charades — App per il Gioco dei Mimi e 20 Domande contro un'IA",
     description:
-      "AI Charades è due giochi di parole in uno: batti un'IA intelligente in solitaria con 20 Domande, poi passa il telefono per il classico gioco dei mimi. Oltre 40 mazzi, una Parola del Giorno, 19 lingue. Gratis su iOS e Android.",
+      "Gioca ai mimi sul telefono: modalità festa con il telefono sulla fronte che funziona offline, più 20 Domande contro un'IA vera. Oltre 40 mazzi di parole, mazzi personalizzati generati dall'IA, Parola del Giorno, 19 lingue. Gratis su iPhone e Android.",
   },
   header: {
     modes: "Modalità",

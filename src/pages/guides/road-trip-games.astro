@@ -1,0 +1,97 @@
+---
+import { Image } from "astro:assets";
+import GuideLayout from "../../layouts/GuideLayout.astro";
+import { getGuide } from "../../data/guides";
+import partyGameplay from "../../assets/screenshots/party-gameplay.png";
+
+const guide = getGuide("road-trip-games");
+const faq = [
+  {
+    q: "What games can you play in the car without internet?",
+    a: "Classics like 20 Questions, I Spy, the License Plate Game and word association need nothing at all. For app-based play, AI Charades' heads-up party mode runs fully offline, so it keeps working through dead zones.",
+  },
+  {
+    q: "What's a good road trip game for the whole car?",
+    a: "Guessing games win because everyone participates at once. Heads-up charades with the phone passed around (driver excluded!) gets the entire car shouting clues at the guesser.",
+  },
+  {
+    q: "Are these games safe for the driver?",
+    a: "The driver should never hold or look at a phone. Verbal games — 20 Questions, word association, categories — include the driver safely; screen-based games are for passengers.",
+  },
+  {
+    q: "What road trip games work for kids?",
+    a: "I Spy, the Animal Name Game, and charades with easy packs (Animals, Food, Emojis). See our charades-for-kids guide for words sorted by age.",
+  },
+];
+---
+
+<GuideLayout guide={guide} faq={faq}>
+  <h1>10 best road trip games — no Wi-Fi needed</h1>
+  <p>
+    The best road trip games share three traits: zero equipment, everyone can play at
+    once, and they survive the moment your signal dies on the interstate. Here are ten
+    that deliver — from centuries-old classics to one app mode built specifically for
+    offline play.
+  </p>
+
+  <h2>1. Heads-up charades (one phone, works offline)</h2>
+  <p>
+    The passenger-seat classic: one player holds a phone to their forehead showing a
+    word they can't see, and the rest of the car shouts clues before the timer runs
+    out. Tilt down to score, tilt up to pass.
+    <strong>AI Charades</strong>' party mode is built for exactly this — it plays
+    fully offline, tracks everyone's score, and has 40+ word packs so it lasts the
+    whole drive.
+  </p>
+  <figure class="landscape">
+    <Image src={partyGameplay} alt="Playing offline heads-up charades in the car with AI Charades showing the word Barber Shop and a timer" width={680} loading="lazy" />
+    <figcaption>Offline heads-up round — no signal required anywhere on the route.</figcaption>
+  </figure>
+
+  <h2>2. 20 Questions</h2>
+  <p>
+    One player thinks of a thing; the car gets 20 yes/no questions to crack it. Fully
+    verbal, so the driver can play too. Once you're back in coverage, you can also
+    play <a href="/guides/20-questions-game/">20 Questions against an AI</a> that
+    genuinely reasons — perfect for the passenger who never gets tired of winning.
+  </p>
+
+  <h2>3. The License Plate Game</h2>
+  <p>Spot plates from as many states (or countries) as you can. First to 20 wins — or play cooperatively and try to beat your family record.</p>
+
+  <h2>4. I Spy</h2>
+  <p>"I spy with my little eye, something… green." The preschool staple, and still the easiest way to occupy the under-6 crowd for half an hour.</p>
+
+  <h2>5. Word association</h2>
+  <p>Say a word; the next player must instantly say a related one. Hesitate, repeat, or blank out and you're eliminated. Brutal after hour four.</p>
+
+  <h2>6. The Alphabet Game</h2>
+  <p>Find words starting with A through Z, in order, on signs and buildings outside. "Q" and "X" have ended friendships.</p>
+
+  <h2>7. Two Truths and a Lie</h2>
+  <p>Each player shares three statements; the car votes on which is the lie. Surprisingly effective at unearthing family secrets.</p>
+
+  <h2>8. Categories</h2>
+  <p>Pick a category — pizza toppings, NBA teams, Disney movies — and go around the car until someone can't name a new one. Loser picks the next category.</p>
+
+  <h2>9. Would You Rather</h2>
+  <p>"Would you rather always be 10 minutes late or 20 minutes early?" Zero setup, infinite arguments.</p>
+
+  <h2>10. The Movie Chain</h2>
+  <p>Name a movie, next player names an actor from it, next names another movie with that actor, and so on. First one stumped loses.</p>
+
+  <h2>Why one offline app beats a bag of games</h2>
+  <ul>
+    <li><strong>No pieces to drop</strong> between the seats.</li>
+    <li><strong>No signal needed:</strong> AI Charades' party mode is fully offline by design.</li>
+    <li><strong>Automatic scoring</strong> ends the "I had more!" debates.</li>
+    <li><strong>Custom packs:</strong> <a href="/guides/charades-word-generator/">generate a themed word pack</a> about your destination before you leave Wi-Fi.</li>
+  </ul>
+  <div class="callout">
+    <p>
+      Need rules for the guessing games? See
+      <a href="/guides/how-to-play-heads-up/">how to play Heads Up</a> and
+      <a href="/guides/how-to-play-charades/">how to play charades</a>.
+    </p>
+  </div>
+</GuideLayout>

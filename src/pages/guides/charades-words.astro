@@ -1,0 +1,91 @@
+---
+import { Image } from "astro:assets";
+import GuideLayout from "../../layouts/GuideLayout.astro";
+import { getGuide } from "../../data/guides";
+import categoriesShot from "../../assets/screenshots/categories.png";
+
+const guide = getGuide("charades-words");
+
+const easy = ["Dog", "Cat", "Sleeping", "Swimming", "Basketball", "Elephant", "Dancing", "Pizza", "Monkey", "Driving", "Guitar", "Bird", "Running", "Fishing", "Snake", "Brushing teeth", "Penguin", "Jumping rope", "Cooking", "Airplane"];
+const movies = ["Titanic", "Jaws", "Frozen", "Spider-Man", "The Lion King", "Jurassic Park", "Harry Potter", "Rocky", "Finding Nemo", "King Kong", "Star Wars", "Ghostbusters", "The Matrix", "Toy Story", "Batman", "Pirates of the Caribbean", "E.T.", "Shrek", "Avatar", "Home Alone"];
+const actions = ["Shoveling snow", "Milking a cow", "Walking a dog", "Making a sandwich", "Changing a tire", "Taking a selfie", "Ironing a shirt", "Playing chess", "Juggling", "Rock climbing", "Riding a rollercoaster", "Painting a fence", "Blowing out candles", "Building a sandcastle", "Wrapping a gift"];
+const funny = ["Waking up late for work", "A cat knocking things off a table", "Stepping on a Lego", "Trying to open a pickle jar", "A robot doing yoga", "Losing your phone while holding it", "A mime stuck in a real box", "Karaoke gone wrong", "Slipping on a banana peel", "A T-Rex making a bed", "Getting a brain freeze", "Untangling headphones", "A penguin on an escalator", "Falling asleep in a meeting", "Being a GPS voice"];
+const hard = ["Déjà vu", "Photosynthesis", "Inflation", "Procrastination", "Claustrophobia", "The internet", "Gravity", "A conspiracy theory", "Nostalgia", "Jet lag", "Static electricity", "Peer pressure", "A plot twist", "Sarcasm", "Writer's block"];
+const jobs = ["Firefighter", "Dentist", "Barber", "Chef", "Pilot", "Photographer", "Farmer", "Surgeon", "Teacher", "Magician", "Lifeguard", "Plumber", "News anchor", "Referee", "Astronaut"];
+const animals = ["Kangaroo", "Sloth", "Octopus", "Flamingo", "T-Rex", "Hamster", "Giraffe", "Crab", "Woodpecker", "Bat", "Jellyfish", "Peacock", "Gorilla", "Seal", "Chameleon"];
+const holidays = ["Decorating a Christmas tree", "Trick-or-treating", "Fireworks", "Easter egg hunt", "Carving a pumpkin", "Opening presents", "Building a snowman", "Turkey dinner", "Blowing a party horn", "Lighting birthday candles"];
+
+const sections = [
+  { h: "Easy charades words (great for beginners & kids)", words: easy },
+  { h: "Movie charades words", words: movies },
+  { h: "Action charades words", words: actions },
+  { h: "Funny charades words (crowd favorites)", words: funny },
+  { h: "Hard charades words (expert level)", words: hard },
+  { h: "Jobs & occupations", words: jobs },
+  { h: "Animal charades words", words: animals },
+  { h: "Holiday charades words", words: holidays },
+];
+
+const faq = [
+  {
+    q: "What are the best charades words for adults?",
+    a: "Funny scenarios (stepping on a Lego, karaoke gone wrong) and abstract concepts (déjà vu, procrastination) get the biggest laughs with adult groups. Mix in movies and famous people for variety.",
+  },
+  {
+    q: "What are good easy charades words?",
+    a: "One-word animals and everyday actions: dog, cat, swimming, sleeping, dancing, pizza. Anything a player can act out with their whole body in a couple of seconds.",
+  },
+  {
+    q: "How many charades words do I need for a game?",
+    a: "Plan on 10–15 words per player per game. For a group of six playing 60-second rounds, 60–90 words keeps the game moving with no repeats — one reason an app with 40+ packs beats paper slips.",
+  },
+  {
+    q: "Can I get charades words generated automatically?",
+    a: "Yes. In the AI Charades app you can type any topic — '90s cartoons, office inside jokes, K-pop — and the AI generates a full word pack for you in seconds.",
+  },
+];
+---
+
+<GuideLayout guide={guide} faq={faq}>
+  <h1>150+ charades words & ideas for every game night</h1>
+  <p>
+    The hardest part of charades isn't the acting — it's coming up with good words.
+    Here are 150+ ready-to-use charades words sorted by difficulty and theme: easy
+    words for kids, funny scenarios for adults, movies, animals, actions and
+    expert-level ideas. Steal the lists, or skip the prep entirely with an app that
+    ships 40+ word packs.
+  </p>
+
+  {sections.map((s) => (
+    <>
+      <h2>{s.h}</h2>
+      <ul class="word-grid">
+        {s.words.map((w) => <li>{w}</li>)}
+      </ul>
+    </>
+  ))}
+
+  <h2>Never run out of words: 40+ packs in one app</h2>
+  <p>
+    These lists will carry a game night or two — but a group that loves charades burns
+    through words fast. The <strong>AI Charades</strong> app comes with 40+ themed
+    packs of 50 words each (Animals, Movies, Anime, Brands, Food, Sports, Music,
+    Disney, Video Games and more), so you'll never act out "dog" twice.
+  </p>
+  <figure>
+    <Image src={categoriesShot} alt="AI Charades word pack grid showing Animals, Food & Drinks, Movies, Sports and more categories" width={340} loading="lazy" />
+    <figcaption>A slice of the pack library — each pack holds 50 words.</figcaption>
+  </figure>
+  <p>
+    Want words about something specific — your friend group, a bachelorette party, an
+    obscure fandom? Type the topic and the AI writes the pack for you. See how in the
+    <a href="/guides/charades-word-generator/">charades word generator guide</a>.
+  </p>
+  <div class="callout">
+    <p>
+      New to the game? Start with the rules in
+      <a href="/guides/how-to-play-charades/">how to play charades</a>, or the
+      phone-on-forehead version in <a href="/guides/how-to-play-heads-up/">how to play Heads Up</a>.
+    </p>
+  </div>
+</GuideLayout>

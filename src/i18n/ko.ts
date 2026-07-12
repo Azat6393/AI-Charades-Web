@@ -2,9 +2,9 @@ import type { Dictionary } from "./types";
 
 export const ko: Dictionary = {
   meta: {
-    title: "AI Charades — 똑똑한 AI와 함께하는 단어 맞추기 파티 게임",
+    title: "AI Charades — 몸으로 말해요 게임 앱 & AI와 스무고개",
     description:
-      "AI Charades는 두 가지 단어 게임이 하나로! 솔로 모드에서 똑똑한 AI를 상대로 스무고개를 즐기고, 헤드업 참여 모드로 친구들과 몸으로 표현하며 즐겨보세요. 40개 이상의 팩, 매일의 단어, 19개 언어 지원. iOS 및 Android에서 무료.",
+      "폰으로 즐기는 몸으로 말해요: 이마에 폰을 대는 파티 모드는 오프라인에서도 작동하고, 진짜 AI와 스무고개 대결까지. 40개 이상의 단어 팩, AI가 만들어 주는 커스텀 덱, 매일의 단어, 19개 언어. iPhone과 Android에서 무료.",
   },
   header: {
     modes: "모드",

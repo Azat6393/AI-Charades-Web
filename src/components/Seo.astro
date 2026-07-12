@@ -10,9 +10,11 @@ interface Props {
   noindex?: boolean;
   lang?: string;
   dict?: Dictionary;
+  /** English-only pages (guides) have no localized alternates. */
+  hreflang?: boolean;
 }
 
-const { title, description, path = "/", noindex = false, lang, dict } = Astro.props;
+const { title, description, path = "/", noindex = false, lang, dict, hreflang = true } = Astro.props;
 // The static build serves directory URLs (/de/support/), so canonicals and
 // hreflang must use the trailing-slash form to match the served URL.
 const normalizedPath = path.endsWith("/") ? path : `${path}/`;
@@ -32,7 +34,9 @@ const alternates = locales.map((l) => ({
   ).toString(),
 }));
 const xDefaultHref = new URL(pathWithoutLocale, site.domain).toString();
-const faq = dict?.faq ?? [];
+// Guide pages (hreflang=false) emit their own FAQPage JSON-LD, so skip the
+// homepage FAQ schema there to avoid two FAQPage blocks on one URL.
+const faq = hreflang ? dict?.faq ?? [] : [];
 
 const storeUrls = [site.appStoreUrl, site.playStoreUrl].filter(
   (url) => !url.startsWith("TODO")
@@ -84,10 +88,10 @@ const orgLd = {
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
-{lang && alternates.map((a) => (
+{lang && hreflang && alternates.map((a) => (
   <link rel="alternate" hreflang={a.hreflang} href={a.href} />
 ))}
-{lang && <link rel="alternate" hreflang="x-default" href={xDefaultHref} />}
+{lang && hreflang && <link rel="alternate" hreflang="x-default" href={xDefaultHref} />}
 <meta name="theme-color" content="#FFD43B" />
 <meta name="robots" content={noindex ? "noindex,nofollow" : "index,follow,max-image-preview:large"} />
 

@@ -2,9 +2,9 @@ import type { Dictionary } from "./types";
 
 export const es: Dictionary = {
   meta: {
-    title: "AI Charades — Juego de Adivinar Palabras con una IA Inteligente",
+    title: "AI Charades — App de Charadas para el Móvil y 20 Preguntas contra una IA",
     description:
-      "AI Charades son dos juegos de palabras en uno: gana a una IA inteligente en el modo solo de 20 Preguntas, y luego pasa el teléfono para las charadas clásicas. Más de 40 mazos, una Palabra del Día, 19 idiomas. Gratis en iOS y Android.",
+      "Juega a las charadas en tu móvil: modo fiesta con el teléfono en la frente que funciona sin internet, más 20 Preguntas contra una IA de verdad. Más de 40 mazos de palabras, mazos generados por IA, Palabra del Día, 19 idiomas. Gratis en iPhone y Android.",
   },
   header: {
     modes: "Modos",

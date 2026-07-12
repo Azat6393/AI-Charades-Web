@@ -2,9 +2,9 @@ import type { Dictionary } from "./types";
 
 export const de: Dictionary = {
   meta: {
-    title: "AI Charades — Wortratespiel mit einer cleveren KI",
+    title: "AI Charades — Scharade-App fürs Handy & 20 Fragen gegen eine KI",
     description:
-      "AI Charades sind zwei Wortspiele in einem: Überliste eine clevere KI im Solo-Modus „20 Fragen“ und gib dann das Handy weiter für klassische Stirnraten-Charade. 40+ Pakete, ein Wort des Tages, 19 Sprachen. Kostenlos für iOS & Android.",
+      "Scharade auf dem Handy spielen: Stirnraten-Partymodus, der offline funktioniert, plus 20 Fragen gegen eine echte KI. 40+ Wortpakete, eigene KI-generierte Decks, Wort des Tages, 19 Sprachen. Kostenlos für iPhone & Android.",
   },
   header: {
     modes: "Modi",

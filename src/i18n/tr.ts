@@ -2,9 +2,9 @@ import type { Dictionary } from "./types";
 
 export const tr: Dictionary = {
   meta: {
-    title: "AI Charades — Akıllı Yapay Zekâlı Kelime Bulma Parti Oyunu",
+    title: "AI Charades — Sessiz Sinema Oyunu & Yapay Zekâya Karşı 20 Soru",
     description:
-      "AI Charades tek uygulamada iki kelime oyunu: solo modda akıllı bir yapay zekâyı 20 Soru'da alt et, sonra telefonu elden ele dolaştırıp klasik kafada tabu oyna. 40+ paket, Günün Kelimesi, 19 dil. iOS ve Android'de ücretsiz.",
+      "Telefonda sessiz sinema oyna: alnına telefon koyduğun parti modu internetsiz çalışır, üstüne gerçek bir yapay zekâya karşı 20 Soru. 40+ kelime paketi, yapay zekânın ürettiği özel desteler, Günün Kelimesi, 19 dil. iPhone ve Android'de ücretsiz.",
   },
   header: {
     modes: "Modlar",

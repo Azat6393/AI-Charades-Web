@@ -2,9 +2,9 @@ import type { Dictionary } from "./types";
 
 export const sv: Dictionary = {
   meta: {
-    title: "AI Charades — Ordgissningsspel med en smart AI",
+    title: "AI Charades — Charader-app för Mobilen & 20 Frågor mot en AI",
     description:
-      "AI Charades är två ordspel i ett: lura en smart AI i sololäget 20 frågor, ge sedan telefonen vidare för klassisk charader. 40+ paket, ett dagligt ord, 19 språk. Gratis på iOS & Android.",
+      "Spela charader på mobilen: partyläge med telefonen mot pannan som funkar offline, plus 20 frågor mot en riktig AI. 40+ ordpaket, egna AI-genererade kortlekar, dagens ord, 19 språk. Gratis på iPhone & Android.",
   },
   header: {
     modes: "Lägen",

@@ -14,8 +14,9 @@ interface Props {
   noindex?: boolean;
   lang: string;
   dict?: Dictionary;
+  hreflang?: boolean;
 }
-const { title, description, path, noindex, lang, dict } = Astro.props;
+const { title, description, path, noindex, lang, dict, hreflang } = Astro.props;
 const { dir } = getLocaleInfo(lang);
 ---
 
@@ -29,7 +30,7 @@ const { dir } = getLocaleInfo(lang);
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="preload" href="/fonts/baloo2-700.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
-    <Seo title={title} description={description} path={path} noindex={noindex} lang={lang} dict={dict} />
+    <Seo title={title} description={description} path={path} noindex={noindex} lang={lang} dict={dict} hreflang={hreflang} />
     {import.meta.env.PROD && (
       <>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-VPQB1JM1X5"></script>

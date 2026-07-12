@@ -2,9 +2,9 @@ import type { Dictionary } from "./types";
 
 export const nl: Dictionary = {
   meta: {
-    title: "AI Charades — Woordraadspel met een Slimme AI",
+    title: "AI Charades — Hints & Charades-app + 20 Vragen tegen een AI",
     description:
-      "AI Charades is twee woordspellen in één: verslaat een slimme AI in solo 20 Vragen, geef daarna de telefoon door voor klassieke charades. 40+ paketten, een Dagelijks Woord, 19 talen. Gratis op iOS & Android.",
+      "Speel hints op je telefoon: een party-modus met de telefoon op je voorhoofd die offline werkt, plus 20 Vragen tegen een echte AI. 40+ woordpakketten, AI-gegenereerde eigen decks, een Dagelijks Woord, 19 talen. Gratis op iPhone & Android.",
   },
   header: {
     modes: "Spelmodi",

@@ -1,0 +1,104 @@
+---
+import { Image } from "astro:assets";
+import GuideLayout from "../../layouts/GuideLayout.astro";
+import { getGuide } from "../../data/guides";
+import partySetup from "../../assets/screenshots/party-setup.png";
+import partyResults from "../../assets/screenshots/party-results.png";
+
+const guide = getGuide("how-to-play-charades");
+const faq = [
+  {
+    q: "Can you talk in charades?",
+    a: "No — the actor can't speak, mouth words, or make sounds. Everything is mime. Guessers can (and should) shout as many guesses as they like.",
+  },
+  {
+    q: "How many people do you need to play charades?",
+    a: "Four or more is ideal so you can split into two teams, but three works with a rotating actor, and with a phone app you can even play word-guessing games solo against an AI.",
+  },
+  {
+    q: "How long is a charades round?",
+    a: "60 seconds is the classic round length. Use 90 seconds for younger kids or hard words, and 30 seconds if your group wants a challenge.",
+  },
+  {
+    q: "What are good charades words for beginners?",
+    a: "Start with animals and actions — dog, swimming, sleeping, basketball. They're easy to act out with the whole body. Save movies, idioms and famous people for experienced groups.",
+  },
+];
+---
+
+<GuideLayout guide={guide} faq={faq}>
+  <h1>How to play charades: rules, gestures & setup</h1>
+  <p>
+    Charades is the classic acting game: one player silently acts out a secret word or
+    phrase while their team shouts guesses before the timer runs out. No talking, no
+    sounds, no pointing at objects in the room — just mime. Here are the full rules,
+    the standard hand signals, and the fastest way to play with nothing but a phone.
+  </p>
+
+  <h2>Charades rules in 30 seconds</h2>
+  <ol>
+    <li><strong>Split into two teams</strong> (or play free-for-all in small groups).</li>
+    <li><strong>One player is the actor.</strong> They draw a secret word — from cards, a word list, or an app.</li>
+    <li><strong>Start a 60-second timer.</strong> The actor mimes the word; their team shouts guesses.</li>
+    <li><strong>No talking, no mouthing words, no sounds</strong> from the actor. Gestures only.</li>
+    <li><strong>Score a point</strong> for every word guessed before time runs out, then pass to the next actor.</li>
+    <li><strong>Highest score wins</strong> after everyone has acted the same number of turns.</li>
+  </ol>
+
+  <h2>The classic charades hand signals</h2>
+  <ul>
+    <li><strong>Category first:</strong> mime a film camera for movies, open palms like a book, draw a TV square for shows, dance for songs.</li>
+    <li><strong>Number of words:</strong> hold up fingers — three fingers = three words.</li>
+    <li><strong>Which word you're acting:</strong> hold up fingers again (two fingers = second word).</li>
+    <li><strong>Syllables:</strong> tap fingers on your forearm.</li>
+    <li><strong>"Sounds like":</strong> tug your earlobe, then act a rhyming word.</li>
+    <li><strong>"Close, keep going":</strong> wave your hands toward yourself.</li>
+    <li><strong>"Correct!":</strong> point at the guesser and tap your nose.</li>
+  </ul>
+
+  <h2>The easier variant: reverse charades (Heads Up style)</h2>
+  <p>
+    In classic charades one person acts and many guess. The modern phone version flips
+    it: <strong>one person guesses while everyone else acts or shouts clues</strong>.
+    The guesser holds the phone on their forehead showing a word they can't see, and
+    tilts the phone down when they get it right. It's faster, louder, and nobody gets
+    stage fright. We cover it in detail in
+    <a href="/guides/how-to-play-heads-up/">how to play Heads Up</a>.
+  </p>
+
+  <h2>How to play charades on your phone (zero prep)</h2>
+  <p>
+    Writing words on scraps of paper is the slowest part of charades. The
+    <strong>AI Charades</strong> app replaces the hat of paper slips entirely:
+  </p>
+  <figure>
+    <Image src={partySetup} alt="AI Charades party mode setup screen with players, round length and category selection" width={340} loading="lazy" />
+    <figcaption>Party setup in AI Charades: add players, pick rules, choose packs.</figcaption>
+  </figure>
+  <ol>
+    <li><strong>Open Heads Up! party mode</strong> — it works fully offline.</li>
+    <li><strong>Add your players</strong> and pick a round length (30, 60 or 90 seconds).</li>
+    <li><strong>Choose word packs</strong> — Animals, Movies, Food, Sports and 40+ more, or <a href="/guides/charades-word-generator/">generate a custom pack with AI</a> on any topic.</li>
+    <li><strong>Pass the phone.</strong> Each player holds it to their forehead while the group acts out or shouts clues. Tilt down to score, tilt up to pass.</li>
+    <li><strong>Check the leaderboard</strong> — the app tracks every player's score and shows which words you nailed and which got away.</li>
+  </ol>
+  <figure>
+    <Image src={partyResults} alt="AI Charades results screen with winner, leaderboard, and list of correct and missed words" width={340} loading="lazy" />
+    <figcaption>Automatic scoring and a per-word recap at the end of each game.</figcaption>
+  </figure>
+
+  <h2>Tips to be great at charades</h2>
+  <ul>
+    <li><strong>Establish the category before anything else</strong> — it halves the guessing space.</li>
+    <li><strong>Break phrases into words, words into syllables.</strong> "Spider-Man" is easier as "spider" + "man".</li>
+    <li><strong>Act the whole body.</strong> Big, exaggerated movements beat subtle ones.</li>
+    <li><strong>Guessers: say everything.</strong> A wrong guess often triggers the right one.</li>
+  </ul>
+  <div class="callout">
+    <p>
+      Need word ideas? Grab a list from our
+      <a href="/guides/charades-words/">150+ charades words</a> guide, or easy ones from
+      <a href="/guides/charades-for-kids/">charades for kids</a>.
+    </p>
+  </div>
+</GuideLayout>

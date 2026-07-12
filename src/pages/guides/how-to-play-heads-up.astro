@@ -1,0 +1,87 @@
+---
+import { Image } from "astro:assets";
+import GuideLayout from "../../layouts/GuideLayout.astro";
+import { getGuide } from "../../data/guides";
+import partyGameplay from "../../assets/screenshots/party-gameplay.png";
+import partySetup from "../../assets/screenshots/party-setup.png";
+
+const guide = getGuide("how-to-play-heads-up");
+const faq = [
+  {
+    q: "What are the basic rules of Heads Up?",
+    a: "One player holds a phone on their forehead showing a word they can't see. Everyone else gives clues — acting, describing, or shouting hints. The guesser tilts the phone down for a correct guess and up to pass. Most correct guesses when the timer ends wins.",
+  },
+  {
+    q: "Can you say the word in Heads Up?",
+    a: "No — clue-givers can't say the word itself, spell it, or use rhymes ('sounds like cat'). Everything else — describing, acting, pointing at things — is fair game unless your group decides otherwise.",
+  },
+  {
+    q: "Do you need internet to play Heads Up-style games?",
+    a: "Not necessarily. The heads-up party mode in AI Charades runs fully offline, so it works on planes, road trips and anywhere without signal.",
+  },
+  {
+    q: "How many players do you need for Heads Up?",
+    a: "Two is the minimum (one guesser, one clue-giver), but it's best from three up. Pass-the-phone apps track scores for as many players as you add.",
+  },
+];
+---
+
+<GuideLayout guide={guide} faq={faq}>
+  <h1>How to play Heads Up: the forehead guessing game</h1>
+  <p>
+    Heads Up is reverse charades: instead of one person acting for a guessing crowd,
+    <strong>one person guesses while the whole crowd gives clues</strong>. The guesser
+    holds a phone against their forehead showing a word everyone can see but them.
+    Here are the rules, scoring, clue etiquette, and how to play free on any phone.
+  </p>
+
+  <h2>Heads Up rules, step by step</h2>
+  <ol>
+    <li><strong>Pick a category</strong> — animals, movies, famous people, food…</li>
+    <li><strong>The guesser holds the phone on their forehead</strong>, screen facing out, so friends can see the word.</li>
+    <li><strong>Start the timer</strong> (60 seconds is standard).</li>
+    <li><strong>Friends give clues</strong> — describe it, act it out, make sounds — without saying the word itself.</li>
+    <li><strong>Got it? Tilt the phone down.</strong> The app scores it and shows the next word.</li>
+    <li><strong>Stuck? Tilt up to pass</strong> and move on — no penalty.</li>
+    <li><strong>When the timer ends</strong>, count the correct guesses and pass the phone to the next player. Highest total wins.</li>
+  </ol>
+  <figure class="landscape">
+    <Image src={partyGameplay} alt="AI Charades heads-up gameplay showing the word Barber Shop, a 60-second timer and tilt-to-score instructions" width={680} loading="lazy" />
+    <figcaption>Heads-up round in AI Charades: word front and center, timer and score in the corners.</figcaption>
+  </figure>
+
+  <h2>Clue rules your group should agree on</h2>
+  <ul>
+    <li><strong>Never say the word</strong> or any part of it ("shop" for "Barber Shop" is out).</li>
+    <li><strong>No spelling and no rhyming</strong> — that's the classic house rule.</li>
+    <li><strong>Everything else goes:</strong> descriptions, impressions, acting, sound effects.</li>
+    <li><strong>For a harder game,</strong> switch to act-only clues — full charades mode, no talking.</li>
+  </ul>
+
+  <h2>How to set it up free in AI Charades</h2>
+  <figure>
+    <Image src={partySetup} alt="Heads Up party mode setup in AI Charades: players, round length of 30, 60 or 90 seconds, tilt or tap scoring" width={340} loading="lazy" />
+    <figcaption>Add players, set round length, choose tilt or tap-only scoring.</figcaption>
+  </figure>
+  <ol>
+    <li><strong>Open the Heads Up! tab</strong> — it's marked offline because it needs no connection.</li>
+    <li><strong>Add every player by name.</strong> The app keeps a live leaderboard across rounds.</li>
+    <li><strong>Set the rules:</strong> 30, 60 or 90-second rounds; tilt scoring or tap-only (great for playing flat on a table).</li>
+    <li><strong>Pick word packs</strong> from 40+ options, or <a href="/guides/charades-word-generator/">generate your own with AI</a>.</li>
+    <li><strong>Follow the on-screen prompt</strong> — "phone on forehead" — and play. At the end you get a winner screen plus every word you hit or missed.</li>
+  </ol>
+
+  <h2>Winning tips</h2>
+  <ul>
+    <li><strong>Clue-givers: divide and conquer.</strong> One person describes the category, another the details.</li>
+    <li><strong>Guessers: think in categories.</strong> Say the type ("a place? an animal?") to steer the clues.</li>
+    <li><strong>Pass fast.</strong> Ten seconds stuck on one word costs more than a pass ever will.</li>
+  </ul>
+  <div class="callout">
+    <p>
+      Prefer classic acting-only rules? Read
+      <a href="/guides/how-to-play-charades/">how to play charades</a>. Playing in the
+      car? See the best <a href="/guides/road-trip-games/">road trip games</a>.
+    </p>
+  </div>
+</GuideLayout>

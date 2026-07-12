@@ -2,9 +2,9 @@ import type { Dictionary } from "./types";
 
 export const zh: Dictionary = {
   meta: {
-    title: "AI Charades — 与智能 AI 对战的猜词派对游戏",
+    title: "AI Charades — 猜词游戏 App：比划猜词 & 与 AI 玩 20 个问题",
     description:
-      "AI Charades 是二合一的猜词游戏：先在单人模式中与聪明的 AI 玩 20 问猜谜一较高下，再把手机传给朋友玩经典的比划猜词。40+ 词包、每日一词、支持 19 种语言，iOS 和安卓免费畅玩。",
+      "在手机上玩猜词游戏：手机贴额头的比划猜词派对模式可离线玩，还能和真正的 AI 对战 20 个问题。40+ 词包、AI 生成自定义词包、每日一词、支持 19 种语言。iPhone 和安卓免费下载。",
   },
   header: {
     modes: "玩法",

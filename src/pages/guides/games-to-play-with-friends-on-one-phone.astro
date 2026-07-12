@@ -1,0 +1,93 @@
+---
+import { Image } from "astro:assets";
+import GuideLayout from "../../layouts/GuideLayout.astro";
+import { getGuide } from "../../data/guides";
+import partyResults from "../../assets/screenshots/party-results.png";
+
+const guide = getGuide("games-to-play-with-friends-on-one-phone");
+const faq = [
+  {
+    q: "What games can a group play with only one phone?",
+    a: "Pass-and-play games: heads-up charades, 20 Questions, trivia hot-potato, story chains and drawing games. One phone becomes the word source, timer and scoreboard for the whole group.",
+  },
+  {
+    q: "Are one-phone party games free?",
+    a: "Most have free versions. AI Charades is free to download on iPhone and Android and includes both its party mode and the solo AI mode.",
+  },
+  {
+    q: "What's the best party game for a big group on one phone?",
+    a: "Heads-up charades scales best: only one person holds the phone while everyone else gives clues, so a group of ten is just as loud and involved as a group of four.",
+  },
+  {
+    q: "Do one-phone games need internet?",
+    a: "Not all — AI Charades' heads-up mode is fully offline, so it works at a cabin, on a plane, or anywhere with no signal.",
+  },
+];
+---
+
+<GuideLayout guide={guide} faq={faq}>
+  <h1>Games to play with friends on one phone</h1>
+  <p>
+    No console, no board, no deck of cards — just the group and somebody's phone.
+    Good news: some of the best party games ever made are built for exactly this.
+    Here are eight pass-and-play games that turn one phone into a full game night.
+  </p>
+
+  <h2>1. Heads-up charades — the crowd-pleaser</h2>
+  <p>
+    One player holds the phone to their forehead; the word on screen faces the group,
+    who act it out or shout clues until the guesser cracks it. Tilt down to score,
+    pass the phone, repeat. In <strong>AI Charades</strong> you add every player by
+    name and the app runs the timer, the scoring and a live leaderboard:
+  </p>
+  <figure>
+    <Image src={partyResults} alt="AI Charades leaderboard after a one-phone party game, showing the winner and each player's correct words" width={340} loading="lazy" />
+    <figcaption>End-of-game leaderboard — every player, every word, zero scorekeeper.</figcaption>
+  </figure>
+  <ul>
+    <li><strong>Any group size</strong> — add as many players as you like.</li>
+    <li><strong>Works offline</strong>, so it survives basements and cabins.</li>
+    <li><strong>40+ word packs</strong> plus <a href="/guides/charades-word-generator/">AI-generated custom packs</a> about your friend group.</li>
+  </ul>
+  <p>Full rules: <a href="/guides/how-to-play-heads-up/">how to play Heads Up</a>.</p>
+
+  <h2>2. 20 Questions, tournament style</h2>
+  <p>
+    Pass the phone around and take turns against the AI: it hides a word and answers
+    yes/no questions with real reasoning. Fewest questions to solve wins the round.
+    Strategy guide: <a href="/guides/20-questions-game/">the 20 Questions game</a>.
+  </p>
+
+  <h2>3. Classic charades with an app as the word hat</h2>
+  <p>
+    Keep traditional acting rules — one actor, teams guessing — but let the app deal
+    the words instead of paper slips. Rules and gestures:
+    <a href="/guides/how-to-play-charades/">how to play charades</a>.
+  </p>
+
+  <h2>4. Trivia hot potato</h2>
+  <p>Open any quiz app, pass the phone after each question, and anyone who misses drinks their soda / does ten push-ups / takes the group's chosen forfeit.</p>
+
+  <h2>5. Story chain</h2>
+  <p>Open the notes app. Each player adds one sentence to a story, sees only the previous sentence, and passes it on. Read the result aloud at the end.</p>
+
+  <h2>6. Draw-and-pass telephone</h2>
+  <p>Player one writes a phrase, player two draws it, player three captions the drawing without seeing the phrase… the final reveal is always chaos.</p>
+
+  <h2>7. The accent game</h2>
+  <p>Type a random sentence, pass the phone, and the reader must perform it in an assigned accent while the group guesses the accent.</p>
+
+  <h2>8. Daily Word showdown</h2>
+  <p>
+    AI Charades' Daily Word gives everyone the same hidden word each day. Pass the
+    phone (or compare on your own phones later) and see who solves it in the fewest
+    questions — a 5-minute ritual that keeps streaks alive between game nights.
+  </p>
+
+  <div class="callout">
+    <p>
+      Playing in the car instead of the couch? Same idea, different list:
+      <a href="/guides/road-trip-games/">the best road trip games</a>.
+    </p>
+  </div>
+</GuideLayout>

@@ -23,6 +23,7 @@ const home = localePath(lang, "/");
       <a href={`${home}#modes`}>{dict.header.modes}</a>
       <a href={`${home}#packs`}>{dict.header.packs}</a>
       <a href={`${home}#faq`}>{dict.header.faq}</a>
+      {dict.header.guides && <a href="/guides/">{dict.header.guides}</a>}
     </nav>
     <a href={`${home}#final-cta`} class="btn-primary get-app">{dict.header.getApp}</a>
   </div>

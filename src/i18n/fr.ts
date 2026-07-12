@@ -2,9 +2,9 @@ import type { Dictionary } from "./types";
 
 export const fr: Dictionary = {
   meta: {
-    title: "AI Charades — Le jeu de mimes et devinettes avec une IA maligne",
+    title: "AI Charades — Jeu de Mimes sur Téléphone & 20 Questions contre une IA",
     description:
-      "AI Charades, c'est deux jeux de mots en un : déjouez une IA futée en solo façon 20 Questions, puis passez le téléphone pour un mimes endiablé entre amis. Plus de 40 packs, un Mot du Jour, 19 langues. Gratuit sur iOS et Android.",
+      "Jouez aux mimes sur votre téléphone : un mode fête front-au-téléphone qui marche hors ligne, plus 20 Questions contre une vraie IA. Plus de 40 packs de mots, des decks générés par IA, un Mot du Jour, 19 langues. Gratuit sur iPhone et Android.",
   },
   header: {
     modes: "Modes",

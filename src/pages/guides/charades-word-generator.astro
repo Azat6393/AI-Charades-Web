@@ -1,0 +1,80 @@
+---
+import { Image } from "astro:assets";
+import GuideLayout from "../../layouts/GuideLayout.astro";
+import { getGuide } from "../../data/guides";
+import customCategory from "../../assets/screenshots/custom-category.png";
+
+const guide = getGuide("charades-word-generator");
+const faq = [
+  {
+    q: "Is there a free charades word generator?",
+    a: "Yes — the AI Charades app is free on iPhone and Android and includes an AI generator: type any topic and it writes a full pack of charades words for you.",
+  },
+  {
+    q: "How is an AI generator better than a random word generator?",
+    a: "Random generators pull from one fixed list, so words repeat and can't match your group. An AI generator writes words for your exact topic — 'Marvel villains', 'things in our office', '90s R&B' — and can generate 30 more with one tap.",
+  },
+  {
+    q: "Can I edit the generated words?",
+    a: "Yes. Every generated pack is fully editable — remove words that don't fit, type in your own, and save the pack to reuse at any game night.",
+  },
+  {
+    q: "Do custom packs work in both game modes?",
+    a: "Yes — use your generated pack in heads-up party charades with friends, or in the solo 20 Questions mode against the AI.",
+  },
+];
+---
+
+<GuideLayout guide={guide} faq={faq}>
+  <h1>Charades word generator: unlimited ideas with AI</h1>
+  <p>
+    A charades word generator saves you the worst part of game night — sitting around
+    thinking of words while everyone waits. Online random generators work, but they
+    all draw from the same fixed lists. An <strong>AI generator</strong> goes further:
+    it writes a brand-new word pack about literally any topic you type, in seconds.
+  </p>
+
+  <h2>Random generator vs. AI generator</h2>
+  <table>
+    <thead>
+      <tr><th></th><th>Random word generator</th><th>AI generator (AI Charades)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Word source</td><td>Fixed built-in list</td><td>Written on demand for your topic</td></tr>
+      <tr><td>Custom topics</td><td>A handful of preset categories</td><td>Anything — fandoms, inside jokes, niches</td></tr>
+      <tr><td>Repeats</td><td>Common after a few games</td><td>Tap once to generate 30 fresh words</td></tr>
+      <tr><td>Editing</td><td>Usually none</td><td>Add, remove and save words as a pack</td></tr>
+      <tr><td>Plays the game too</td><td>No — words only</td><td>Yes — timer, tilt scoring, leaderboard</td></tr>
+    </tbody>
+  </table>
+
+  <h2>How to generate a charades word pack in 4 steps</h2>
+  <figure>
+    <Image src={customCategory} alt="Creating a custom Marvel category in AI Charades with 30 AI-generated words like Iron Man and Thor" width={340} loading="lazy" />
+    <figcaption>A "Marvel" pack generated in AI Charades — 30 words in one tap.</figcaption>
+  </figure>
+  <ol>
+    <li><strong>Tap "Create category"</strong> on the AI Charades home screen.</li>
+    <li><strong>Name your topic.</strong> "Marvel", "Things at the beach", "Taylor Swift songs" — anything goes.</li>
+    <li><strong>Tap "Generate 30 more with AI."</strong> The AI fills the pack instantly; packs hold up to 100 words.</li>
+    <li><strong>Edit and save.</strong> Delete words you don't like, add your own, then use the pack in party mode or solo mode.</li>
+  </ol>
+
+  <h2>Custom pack ideas that make game night</h2>
+  <ul>
+    <li><strong>Inside-joke packs</strong> — moments only your friend group understands.</li>
+    <li><strong>Theme-night packs</strong> — Halloween monsters, Christmas movies, Super Bowl.</li>
+    <li><strong>Fandom packs</strong> — anime, K-pop, a specific video game or show.</li>
+    <li><strong>Classroom packs</strong> — vocabulary words, historical figures, science terms.</li>
+    <li><strong>Work packs</strong> — office lingo and coworkers' catchphrases for team events.</li>
+  </ul>
+
+  <div class="callout">
+    <p>
+      Prefer ready-made lists? We collected
+      <a href="/guides/charades-words/">150+ charades words by category</a> — and the
+      app ships 40+ packs out of the box. Rules refresher:
+      <a href="/guides/how-to-play-charades/">how to play charades</a>.
+    </p>
+  </div>
+</GuideLayout>

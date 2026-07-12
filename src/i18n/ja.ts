@@ -2,9 +2,9 @@ import type { Dictionary } from "./types";
 
 export const ja: Dictionary = {
   meta: {
-    title: "AI Charades — 賢いAIと対決するワード当てパーティーゲーム",
+    title: "AI Charades — ジェスチャーゲームアプリ＆AIと対戦する20の質問",
     description:
-      "AI Charadesは2つのワードゲームが1つになったアプリ。ソロモードで賢いAIを出し抜く20の質問ゲームを楽しんだら、スマホを回して定番のジェスチャーゲームへ。40以上のパック、デイリーワード、19言語対応。iOS・Androidで無料。",
+      "スマホでジェスチャーゲーム：おでこにスマホを当てるパーティーモードはオフラインでも遊べて、本物のAIと対戦する20の質問も。40以上のワードパック、AIが作るカスタムデッキ、デイリーワード、19言語対応。iPhone・Androidで無料。",
   },
   header: {
     modes: "モード",

@@ -1,0 +1,221 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import StoreBadges from "../components/StoreBadges.astro";
+import { site } from "../data/site";
+import { guides, type GuideMeta } from "../data/guides";
+import { getDictionary, defaultLocale } from "../i18n";
+import type { FaqItem } from "../i18n/types";
+
+interface Props {
+  guide: GuideMeta;
+  faq?: FaqItem[];
+  datePublished?: string;
+}
+
+const { guide, faq = [], datePublished = "2026-07-12" } = Astro.props;
+const lang = defaultLocale;
+const dict = getDictionary(lang);
+const path = `/guides/${guide.slug}/`;
+const url = new URL(path, site.domain).toString();
+const related = guides.filter((g) => g.slug !== guide.slug).slice(0, 8);
+
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: guide.title,
+  description: guide.description,
+  datePublished,
+  dateModified: datePublished,
+  mainEntityOfPage: url,
+  image: new URL("/og/og-cover.png", site.domain).toString(),
+  author: { "@type": "Organization", name: site.name, url: site.domain + "/" },
+  publisher: {
+    "@type": "Organization",
+    name: site.name,
+    logo: { "@type": "ImageObject", url: new URL("/icons/icon-512.png", site.domain).toString() },
+  },
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: site.domain + "/" },
+    { "@type": "ListItem", position: 2, name: "Guides", item: site.domain + "/guides/" },
+    { "@type": "ListItem", position: 3, name: guide.cardTitle, item: url },
+  ],
+};
+
+const faqLd =
+  faq.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faq.map((item) => ({
+          "@type": "Question",
+          name: item.q,
+          acceptedAnswer: { "@type": "Answer", text: item.a },
+        })),
+      }
+    : null;
+---
+
+<BaseLayout
+  title={guide.title}
+  description={guide.description}
+  path={path}
+  lang={lang}
+  dict={dict}
+  hreflang={false}
+>
+  <Header dict={dict} lang={lang} />
+  <main class="guide">
+    <div class="container guide-container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">→</span>
+        <a href="/guides/">Guides</a>
+        <span aria-hidden="true">→</span>
+        <span aria-current="page">{guide.cardTitle}</span>
+      </nav>
+
+      <article class="prose">
+        <slot />
+      </article>
+
+      {faq.length > 0 && (
+        <section class="prose guide-faq">
+          <h2>Frequently asked questions</h2>
+          {faq.map((item) => (
+            <details class="card faq-item">
+              <summary>{item.q}</summary>
+              <p>{item.a}</p>
+            </details>
+          ))}
+        </section>
+      )}
+
+      <aside class="cta card">
+        <h2>Play it free on your phone</h2>
+        <p>
+          AI Charades puts all of this in one free app: heads-up charades that works
+          offline, 20 Questions against a real AI, 40+ word packs and custom
+          AI-generated decks. On iPhone and Android.
+        </p>
+        <StoreBadges dict={dict} />
+      </aside>
+
+      <section class="related">
+        <h2>More guides</h2>
+        <ul>
+          {related.map((g) => (
+            <li>
+              <a href={`/guides/${g.slug}/`} class="card card--lift related-card">
+                <span class="related-icon">{g.icon}</span>
+                <span>
+                  <strong>{g.cardTitle}</strong>
+                  <small>{g.cardBlurb}</small>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+  </main>
+  <Footer dict={dict} lang={lang} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
+  {faqLd && <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />}
+</BaseLayout>
+
+<style is:global>
+  .guide { padding-block: 2.5rem 4rem; }
+  .guide-container { max-width: 780px; }
+  .breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--ink-muted);
+    margin-bottom: 2rem;
+  }
+  .breadcrumbs a { color: var(--ink-muted); }
+  .breadcrumbs [aria-current] { color: var(--ink); font-weight: 600; }
+
+  .prose h1 { font-size: clamp(2rem, 5vw, 2.75rem); line-height: 1.1; margin-bottom: 1rem; }
+  .prose h2 { margin-top: 2.5rem; margin-bottom: 0.75rem; }
+  .prose h3 { margin-top: 1.75rem; margin-bottom: 0.5rem; }
+  .prose p, .prose li { color: var(--ink-muted); line-height: 1.7; }
+  .prose > p:first-of-type { font-size: 1.125rem; color: var(--ink); }
+  .prose ul, .prose ol { padding-inline-start: 1.35rem; margin-block: 1rem; }
+  .prose li { margin-block: 0.35rem; }
+  .prose li strong, .prose p strong { color: var(--ink); }
+  .prose a { font-weight: 600; }
+  .prose figure { margin: 2rem auto; text-align: center; }
+  .prose figure img {
+    max-width: min(300px, 100%);
+    height: auto;
+    border-radius: 24px;
+    border: 3px solid var(--fiesta-ink);
+    box-shadow: var(--shadow-sticker-sm);
+  }
+  .prose figure.landscape img { max-width: 100%; }
+  .prose figcaption { font-size: 0.85rem; color: var(--ink-muted); margin-top: 0.6rem; }
+  .prose table { width: 100%; border-collapse: collapse; margin-block: 1rem; font-size: 0.95rem; }
+  .prose th, .prose td { border: 2px solid var(--hairline); padding: 0.6rem 0.75rem; text-align: left; }
+  .prose th { background: var(--fiesta-surface); color: var(--ink); }
+  .prose td { color: var(--ink-muted); }
+  .word-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.4rem 1rem;
+    list-style: none;
+    padding: 0 !important;
+  }
+  .callout {
+    border: 2px solid var(--fiesta-ink);
+    border-radius: 16px;
+    background: var(--fiesta-surface);
+    padding: 1.1rem 1.35rem;
+    margin-block: 1.5rem;
+  }
+  .callout p { margin: 0; }
+
+  .guide-faq { margin-top: 3rem; }
+  .faq-item { padding: 1rem 1.25rem; margin-block: 0.75rem; }
+  .faq-item summary { font-weight: 700; cursor: pointer; }
+  .faq-item p { margin: 0.75rem 0 0; color: var(--ink-muted); }
+
+  .guide .cta {
+    margin-top: 3rem;
+    padding: 2rem;
+    text-align: center;
+    background: var(--fiesta-surface);
+  }
+  .guide .cta h2 { margin-bottom: 0.5rem; }
+  .guide .cta p { color: var(--ink-muted); max-width: 48ch; margin-inline: auto; }
+
+  .related { margin-top: 3rem; }
+  .related h2 { margin-bottom: 1rem; }
+  .related ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.85rem;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  }
+  .related-card {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+    text-decoration: none;
+    height: 100%;
+  }
+  .related-icon { font-size: 1.5rem; }
+  .related-card strong { display: block; }
+  .related-card small { color: var(--ink-muted); }
+</style>

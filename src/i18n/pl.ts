@@ -2,9 +2,9 @@ import type { Dictionary } from "./types";
 
 export const pl: Dictionary = {
   meta: {
-    title: "AI Charades — Gra w Zgadywanie Słów z Inteligentną AI",
+    title: "AI Charades — Kalambury na Telefon i 20 Pytań przeciwko AI",
     description:
-      "AI Charades to dwie gry słowne w jednej: przechytrz sprytną AI w trybie solo 20 pytań, a potem podaj telefon dalej na klasyczne kalambury. 40+ zestawów, Słowo Dnia, 19 języków. Za darmo na iOS i Android.",
+      "Graj w kalambury na telefonie: tryb imprezowy z telefonem na czole działa offline, a do tego 20 pytań przeciwko prawdziwej AI. Ponad 40 zestawów słów, własne talie generowane przez AI, Słowo Dnia, 19 języków. Za darmo na iPhone i Androida.",
   },
   header: {
     modes: "Tryby",

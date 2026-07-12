@@ -27,6 +27,7 @@ const year = new Date().getFullYear();
       <a href={`${home}#modes`}>{dict.footer.modes}</a>
       <a href={`${home}#packs`}>{dict.footer.packs}</a>
       <a href={`${home}#faq`}>{dict.footer.faq}</a>
+      {dict.footer.guides && <a href="/guides/">{dict.footer.guides}</a>}
       <a href={`mailto:${site.supportEmail}`}>{dict.footer.support}</a>
       <a href={localePath(lang, "/privacy-policy/")}>{dict.footer.privacy}</a>
       <a href={localePath(lang, "/terms/")}>{dict.footer.terms}</a>

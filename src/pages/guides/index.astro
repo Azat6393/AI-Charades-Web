@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { guides } from "../../data/guides";
+import { getDictionary, defaultLocale } from "../../i18n";
+
+const lang = defaultLocale;
+const dict = getDictionary(lang);
+---
+
+<BaseLayout
+  title="Charades & Word Game Guides — Rules, Word Lists & Ideas"
+  description="How to play charades and Heads Up, ready-to-use charades word lists, 20 Questions strategy, road trip games and more — free guides from AI Charades."
+  path="/guides/"
+  lang={lang}
+  dict={dict}
+  hreflang={false}
+>
+  <Header dict={dict} lang={lang} />
+  <main class="guides-index">
+    <div class="container">
+      <p class="eyebrow">Guides</p>
+      <h1>Charades & word game guides</h1>
+      <p class="intro">
+        Everything you need for game night: complete rules for charades, Heads Up and
+        20 Questions, ready-to-use word lists, and party games that work anywhere —
+        even with no signal.
+      </p>
+      <ul class="guide-grid">
+        {guides.map((g) => (
+          <li>
+            <a href={`/guides/${g.slug}/`} class="card card--lift guide-card">
+              <span class="guide-icon">{g.icon}</span>
+              <h2>{g.cardTitle}</h2>
+              <p>{g.cardBlurb}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </main>
+  <Footer dict={dict} lang={lang} />
+</BaseLayout>
+
+<style>
+  .guides-index { padding-block: 3rem 4rem; }
+  h1 { font-size: clamp(2rem, 5vw, 2.75rem); margin-bottom: 0.75rem; }
+  .intro { color: var(--ink-muted); max-width: 60ch; margin-bottom: 2.5rem; font-size: 1.125rem; }
+  .guide-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+  .guide-card {
+    display: block;
+    padding: 1.5rem;
+    text-decoration: none;
+    height: 100%;
+  }
+  .guide-icon { font-size: 2rem; display: block; margin-bottom: 0.75rem; }
+  .guide-card h2 { font-size: 1.25rem; margin-bottom: 0.4rem; }
+  .guide-card p { color: var(--ink-muted); margin: 0; }
+</style>

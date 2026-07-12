@@ -1,0 +1,94 @@
+---
+import { Image } from "astro:assets";
+import GuideLayout from "../../layouts/GuideLayout.astro";
+import { getGuide } from "../../data/guides";
+import soloChat from "../../assets/screenshots/ai-solo-chat.png";
+import soloWin from "../../assets/screenshots/ai-solo-win.png";
+
+const guide = getGuide("20-questions-game");
+const faq = [
+  {
+    q: "What are the rules of 20 Questions?",
+    a: "One player thinks of a secret word (a person, place or thing). The other players ask up to 20 yes-or-no questions to narrow it down. Guess the word within 20 questions and you win; run out and the word-holder wins.",
+  },
+  {
+    q: "What are good questions to ask in 20 Questions?",
+    a: "Ask questions that split the possibilities roughly in half: Is it alive? Is it man-made? Is it bigger than a car? Is it fictional? Would I find it indoors? Save specific guesses for when you've narrowed the field.",
+  },
+  {
+    q: "Can I play 20 Questions against an AI?",
+    a: "Yes — in AI Charades' solo mode, the AI hides a secret word and answers your yes/no/maybe questions with genuine reasoning. It even suggests smart next questions when you're stuck.",
+  },
+  {
+    q: "Is 20 Questions good for your brain?",
+    a: "It's a genuine deduction exercise: you practice forming hypotheses, eliminating categories and asking high-information questions — the same logic used in binary search and scientific reasoning.",
+  },
+];
+---
+
+<GuideLayout guide={guide} faq={faq}>
+  <h1>20 Questions: how to play & how to win against an AI</h1>
+  <p>
+    20 Questions is the purest deduction game there is: a secret word, yes-or-no
+    questions, and a hard limit of twenty. Here's how to play, the question strategy
+    that actually wins games, and how to play online against an AI opponent that
+    genuinely reasons instead of following a script.
+  </p>
+
+  <h2>The rules</h2>
+  <ol>
+    <li><strong>One player picks a secret word</strong> — classically a person, place or thing.</li>
+    <li><strong>The guesser asks yes-or-no questions</strong>, up to 20 in total.</li>
+    <li><strong>Answers must be honest:</strong> yes, no, or maybe when it's genuinely ambiguous.</li>
+    <li><strong>Guessing the word counts as a question</strong> — a wrong direct guess costs you one of your 20.</li>
+    <li><strong>Guess it within 20 and you win.</strong> The fewer questions, the better the win.</li>
+  </ol>
+
+  <h2>Strategy: ask questions that cut the world in half</h2>
+  <p>
+    The winning idea is the same one behind binary search: every question should
+    eliminate about half of what's left, whatever the answer. A perfect halving
+    strategy can distinguish over a million possibilities in 20 questions.
+  </p>
+  <ul>
+    <li><strong>Start broad:</strong> "Is it a living thing?" → "Is it a person?" → "Are they real?"</li>
+    <li><strong>Then constrain:</strong> size, place, era, purpose. "Is it bigger than a microwave?" beats "Is it a toaster?"</li>
+    <li><strong>Use "maybe" answers:</strong> ambiguity is information — the word probably sits on a category edge.</li>
+    <li><strong>Don't guess early.</strong> A specific guess only removes one option; a category question removes thousands.</li>
+  </ul>
+
+  <h2>Play 20 Questions against a real AI</h2>
+  <p>
+    Playing with friends is great — until your friend forgets their own word or fudges
+    an answer. In <strong>AI Charades</strong>' solo mode, the AI (Fiesta) hides a
+    word from one of 40+ categories and answers every question with actual reasoning:
+  </p>
+  <figure>
+    <Image src={soloChat} alt="20 Questions against the AI in AI Charades: yes, no and maybe answers narrowing down a movie character" width={340} loading="lazy" />
+    <figcaption>Chat-style play: ask anything, get honest yes/no/maybe answers.</figcaption>
+  </figure>
+  <ol>
+    <li><strong>Pick a difficulty and categories</strong> — Movies, Animals, Famous People, or your own custom pack.</li>
+    <li><strong>Ask up to 18 questions</strong> by typing or voice. The hidden word's letter tiles fill in as you close in, Wordle-style.</li>
+    <li><strong>Stuck? Use a lifeline.</strong> Smart Suggestions propose your next question, and you can reveal a letter when you're desperate.</li>
+    <li><strong>Solve it fast for a higher score</strong> — the game tracks your time, question count, streaks and win rate, plus a Daily Word that's the same for everyone.</li>
+  </ol>
+  <figure>
+    <Image src={soloWin} alt="AI Charades win screen after guessing Spider-Man in 5 of 18 questions, with a fun fact about the answer" width={340} loading="lazy" />
+    <figcaption>Guessed in 5 of 18 — the win screen even throws in a fun fact.</figcaption>
+  </figure>
+
+  <h2>Why an AI opponent changes the game</h2>
+  <ul>
+    <li><strong>It never cheats or forgets</strong> — answers stay consistent all game.</li>
+    <li><strong>Every game is different</strong> — it reasons about your exact questions instead of matching a script.</li>
+    <li><strong>It plays anytime.</strong> Five minutes in a queue is a full round.</li>
+  </ul>
+  <div class="callout">
+    <p>
+      Want the party version instead? Try
+      <a href="/guides/how-to-play-heads-up/">Heads Up</a> or classic
+      <a href="/guides/how-to-play-charades/">charades</a> — both live in the same app.
+    </p>
+  </div>
+</GuideLayout>

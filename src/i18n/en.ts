@@ -2,15 +2,16 @@ import type { Dictionary } from "./types";
 
 export const en: Dictionary = {
   meta: {
-    title: "AI Charades — Word Guessing Party Game with a Smart AI",
+    title: "AI Charades — Heads Up Charades App & 20 Questions vs AI",
     description:
-      "AI Charades is two word games in one: outsmart a smart AI in solo 20-Questions, then pass the phone for classic heads-up charades. 40+ packs, a Daily Word, 19 languages. Free on iOS & Android.",
+      "Play charades on your phone: a heads-up party game that works offline, plus 20 Questions against a real AI. 40+ word packs, custom AI-generated decks, a Daily Word, 19 languages. Free on iPhone & Android.",
   },
   header: {
     modes: "Modes",
     packs: "Packs",
     faq: "FAQ",
     getApp: "Get the app",
+    guides: "Guides",
   },
   hero: {
     eyebrow: "Two games. One app.",
@@ -113,6 +114,7 @@ export const en: Dictionary = {
     support: "Support",
     privacy: "Privacy Policy",
     terms: "Terms",
+    guides: "Guides",
     copyright: "All rights reserved.",
     availableOn: "Available on iOS and Android.",
   },
