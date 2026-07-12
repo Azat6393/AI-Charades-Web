@@ -29,11 +29,17 @@ const badges = [
   {
     badges.map((badge) =>
       site.preLaunch ? (
-        <button type="button" data-waitlist-trigger aria-label={badge.aria}>
+        <button type="button" data-waitlist-trigger data-store={badge.aria === dict.storeBadges.appStoreAria ? "app_store" : "play_store"} aria-label={badge.aria}>
           <img src={badge.src} alt="" height={height} width={badge.width} loading="lazy" />
         </button>
       ) : (
-        <a href={badge.href} aria-label={badge.aria} rel="noopener">
+        <a
+          href={badge.href}
+          aria-label={badge.aria}
+          rel="noopener"
+          data-store-link
+          data-store={badge.aria === dict.storeBadges.appStoreAria ? "app_store" : "play_store"}
+        >
           <img src={badge.src} alt="" height={height} width={badge.width} loading="lazy" />
         </a>
       )
@@ -44,8 +50,21 @@ const badges = [
 <script>
   document.querySelectorAll("[data-waitlist-trigger]").forEach((trigger) => {
     trigger.addEventListener("click", () => {
+      window.gtag?.("event", "store_click", {
+        store: trigger.getAttribute("data-store"),
+        prelaunch: true,
+      });
       const dialog = document.getElementById("waitlist-dialog");
       if (dialog instanceof HTMLDialogElement) dialog.showModal();
+    });
+  });
+
+  document.querySelectorAll("[data-store-link]").forEach((link) => {
+    link.addEventListener("click", () => {
+      window.gtag?.("event", "store_click", {
+        store: link.getAttribute("data-store"),
+        prelaunch: false,
+      });
     });
   });
 </script>

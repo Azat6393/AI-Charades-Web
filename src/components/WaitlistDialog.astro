@@ -87,6 +87,7 @@ const { dict, lang } = Astro.props;
         form.hidden = true;
         if (note) note.hidden = true;
         if (success) success.hidden = false;
+        window.gtag?.("event", "waitlist_signup");
       } catch {
         if (error) error.hidden = false;
       } finally {
