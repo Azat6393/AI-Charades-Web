@@ -9,6 +9,7 @@ import HowItWorks from "../components/HowItWorks.astro";
 import PackGrid from "../components/PackGrid.astro";
 import FeatureGrid from "../components/FeatureGrid.astro";
 import Occasions from "../components/Occasions.astro";
+import GuidesTeaser from "../components/GuidesTeaser.astro";
 import Faq from "../components/Faq.astro";
 import FinalCta from "../components/FinalCta.astro";
 import Footer from "../components/Footer.astro";
@@ -35,6 +36,7 @@ const dict = getDictionary(lang);
     <PackGrid dict={dict} />
     <FeatureGrid dict={dict} />
     <Occasions dict={dict} />
+    <GuidesTeaser />
     <Faq dict={dict} />
     <FinalCta dict={dict} />
   </main>

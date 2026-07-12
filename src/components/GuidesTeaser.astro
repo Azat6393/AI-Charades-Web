@@ -1,0 +1,54 @@
+---
+// English-only section: guides are not localized, so this only renders on the
+// default-locale homepage.
+import { guides } from "../data/guides";
+
+const featured = guides.slice(0, 4);
+---
+
+<section class="section reveal" id="guides">
+  <div class="container">
+    <h2 class="center">Guides &amp; word lists</h2>
+    <p class="center intro">
+      Complete rules for charades and Heads Up, ready-to-use word lists, and party
+      game ideas — free guides for your next game night.
+    </p>
+    <ul class="guide-grid reveal-stagger">
+      {featured.map((g) => (
+        <li>
+          <a href={`/guides/${g.slug}/`} class="card card--lift guide-card">
+            <span class="guide-icon" aria-hidden="true">{g.icon}</span>
+            <h3>{g.cardTitle}</h3>
+            <p>{g.cardBlurb}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p class="center all-link">
+      <a href="/guides/" class="btn-secondary">Browse all guides</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .center { text-align: center; }
+  .intro { max-width: 60ch; margin: 0 auto 2rem; color: var(--ink-muted); }
+  .guide-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+  .guide-card {
+    display: block;
+    padding: 1.5rem;
+    text-decoration: none;
+    height: 100%;
+  }
+  .guide-icon { font-size: 2rem; display: block; margin-bottom: 0.75rem; }
+  .guide-card h3 { font-size: 1.2rem; margin-bottom: 0.4rem; }
+  .guide-card p { color: var(--ink-muted); margin: 0; }
+  .all-link { margin-top: 2rem; }
+</style>
