@@ -17,7 +17,8 @@ const { title, description, path = "/", noindex = false, lang, dict } = Astro.pr
 // hreflang must use the trailing-slash form to match the served URL.
 const normalizedPath = path.endsWith("/") ? path : `${path}/`;
 const canonical = new URL(normalizedPath, site.domain).toString();
-const ogImage = new URL("/og/og-cover.png", site.domain).toString();
+const ogImageSquare = new URL("/og/og-square.png", site.domain).toString();
+const ogImageWide = new URL("/og/og-cover.png", site.domain).toString();
 
 // path is like /de/ or /privacy-policy/ — strip the locale prefix (if any) to get the page path
 const pathWithoutLocale = lang
@@ -75,7 +76,7 @@ const orgLd = {
   "@type": "Organization",
   name: site.name,
   url: site.domain + "/",
-  logo: new URL("/og/og-cover.png", site.domain).toString(),
+  logo: new URL("/icons/icon-512.png", site.domain).toString(),
   sameAs: storeUrls,
 };
 ---
@@ -95,13 +96,19 @@ const orgLd = {
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
-<meta property="og:image" content={ogImage} />
+<meta property="og:image" content={ogImageSquare} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="1200" />
+<meta property="og:image:alt" content="AI Charades — two word games in one, on iPhone and Android" />
+<meta property="og:image" content={ogImageWide} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="AI Charades — two word games in one, on iPhone and Android" />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image" content={ogImageWide} />
 
 {!site.appStoreId.startsWith("TODO") && (
   <meta name="apple-itunes-app" content={`app-id=${site.appStoreId}`} />

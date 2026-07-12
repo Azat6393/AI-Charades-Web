@@ -37,7 +37,7 @@ const { dict } = Astro.props;
           src={soloGuessScreenshot}
           alt={dict.hero.imageAlt2}
           width={320}
-          fetchpriority="high"
+          loading="eager"
         />
       </div>
       <div class="phone-frame phone-frame--front">
@@ -45,6 +45,7 @@ const { dict } = Astro.props;
           src={homeScreenshot}
           alt={dict.hero.imageAlt}
           width={320}
+          loading="eager"
           fetchpriority="high"
         />
       </div>
