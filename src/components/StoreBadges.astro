@@ -11,12 +11,14 @@ const height = size === "lg" ? "56" : "44";
 
 const badges = [
   {
+    store: "app_store" as const,
     href: site.appStoreUrl,
     aria: dict.storeBadges.appStoreAria,
     src: "/badges/app-store-badge.svg",
     width: size === "lg" ? "168" : "132",
   },
   {
+    store: "play_store" as const,
     href: site.playStoreUrl,
     aria: dict.storeBadges.playStoreAria,
     src: "/badges/google-play-badge.png",
@@ -28,8 +30,8 @@ const badges = [
 <div class:list={["store-badges", size]}>
   {
     badges.map((badge) =>
-      site.preLaunch ? (
-        <button type="button" data-waitlist-trigger data-store={badge.aria === dict.storeBadges.appStoreAria ? "app_store" : "play_store"} aria-label={badge.aria}>
+      site.preLaunch[badge.store] ? (
+        <button type="button" data-waitlist-trigger data-store={badge.store} aria-label={badge.aria}>
           <img src={badge.src} alt="" height={height} width={badge.width} loading="lazy" />
         </button>
       ) : (
@@ -38,7 +40,7 @@ const badges = [
           aria-label={badge.aria}
           rel="noopener"
           data-store-link
-          data-store={badge.aria === dict.storeBadges.appStoreAria ? "app_store" : "play_store"}
+          data-store={badge.store}
         >
           <img src={badge.src} alt="" height={height} width={badge.width} loading="lazy" />
         </a>

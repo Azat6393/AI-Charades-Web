@@ -50,7 +50,7 @@ const { dir } = getLocaleInfo(lang);
   </head>
   <body>
     <slot />
-    {site.preLaunch && dict && <WaitlistDialog dict={dict} lang={lang} />}
+    {Object.values(site.preLaunch).some(Boolean) && dict && <WaitlistDialog dict={dict} lang={lang} />}
     <script>
       const observer = new IntersectionObserver(
         (entries) => {
