@@ -2,12 +2,12 @@ export const site = {
   name: "AI Charades",
   domain: "https://ai-charades.net",
   tagline: "The word game with a brain",
-  appStoreUrl: "TODO_APPSTORE_URL", // https://apps.apple.com/app/id__________
+  appStoreUrl: "https://apps.apple.com/app/id6787686479",
   playStoreUrl: "https://play.google.com/store/apps/details?id=ai.charades.game",
-  appStoreId: "TODO_APPSTORE_ID",
+  appStoreId: "6787686479",
   // Per-store launch state: a badge with preLaunch true opens the waitlist
-  // dialog; false links straight to the store. Android is live; iOS is not yet.
-  preLaunch: { app_store: true, play_store: false },
+  // dialog; false links straight to the store. Both stores are live.
+  preLaunch: { app_store: false, play_store: false },
   // Cloudflare Pages Function that stores waitlist signups in D1.
   // See functions/api/waitlist.ts and wrangler.toml.
   waitlistEndpoint: "/api/waitlist",
